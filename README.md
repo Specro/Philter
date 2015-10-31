@@ -1,5 +1,6 @@
 # Philter
 Philter is a jQuery plugin giving you the power to control CSS filters with HTML classes.
+Visit the [Demo page](http://specro.github.io/Philter/) for exmaples.
 ## Dependencies
 You probably already guessed it. You need jQuery for this one:
 ```HTML
