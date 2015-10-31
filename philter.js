@@ -5,11 +5,11 @@
 
   function getFilterString (filterStrings, filter, units) {
     if (filter[4]) {
-      filterStrings[0] = filterStrings[0] + filter[0] + '(' + filter[1] + units + ' ' + filter[2] + units + ' ' + filter[3] + units + ' #' + filter[4] + ') ';
+      filterStrings[0] = filterStrings[0] + filter[0] + '(' + filter[1] + units + ' ' + filter[2] + units + ' ' + filter[3] + units + ' rgba(0,0,0,' + filter[4]*0.01 + ')) ';
       if (filter[5] && filter[6] && filter[7] && filter[8] && filter[9]) {
-        filterStrings[1] = filterStrings[1] + filter[0] + '(' + filter[6] + units + ' ' + filter[7] + units + ' ' + filter[8] + units + ' #' + filter[9] + ') ';
+        filterStrings[1] = filterStrings[1] + filter[0] + '(' + filter[6] + units + ' ' + filter[7] + units + ' ' + filter[8] + units + ' rgba(0,0,0,' + filter[9]*0.01 + ')) ';
       } else {
-        filterStrings[1] = filterStrings[1] + filter[0] + '(' + filter[1] + units + ' ' + filter[2] + units + ' ' + filter[3] + units + ' #' + filter[4] + ') ';
+        filterStrings[1] = filterStrings[1] + filter[0] + '(' + filter[1] + units + ' ' + filter[2] + units + ' ' + filter[3] + units + ' rgba(0,0,0,' + filter[4]*0.01 + ')) ';
       }
     } else if (filter[0] == 'svg') {
       filterStrings[0] = filterStrings[0] + 'url(' + units + filter[1] + ') ';
