@@ -61,6 +61,7 @@ Here's a list of filters that you can use and their limitations in Philter.
 * brightness
 * drop-shadow - Supports only black color. Requires 4 values. The 4th value instead of color is opacity 0 to 100%.
 * svg - Custom SVG filter. Requires 1 value - filter ID.
+
 Drop shadow filter supports only black color because with it's already long class it would be even longer with rgba implementation.
 ## Compatibility
 Philter was developed on Chrome 46, Firefox 41 and Edge 20 so far. It should be compatible with most versions of browsers that support filters.
