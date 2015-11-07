@@ -60,7 +60,7 @@
                 <div class="col-md-10 col-md-offset-1">
                     <div class="hero-content text-center">
                         <img src="img/philter.png" alt="" />
-                        <p class="intro">Philter is a jQuery plugin giving you the power to control CSS filters with HTML classes.</p>
+                        <p class="intro">Philter is a jQuery plugin giving you the power to control CSS filters with HTML attributes.</p>
                         <a href="https://github.com/Specro/Philter/archive/master.zip" class="btn btn-fill btn-large btn-margin-right">Download</a> <a href="https://github.com/Specro/Philter" class="btn btn-accent btn-large">Learn more</a>
                     </div>
                 </div>
@@ -74,24 +74,24 @@
                 <div class="col-md-5 col-md-offset-7">
                     <div class="feature-list">
                         <h3>What Philter is all about?</h3>
-                        <p>Philter provides an easy way for almost anyone to post-process their content in the web. Using Philter is as easy as writing a CSS class in HTML. In fact, that's what you will be doing!
+                        <p>Philter provides an easy way for almost anyone to post-process their content in the web. Using Philter is as easy as writing an attribute in HTML. In fact, that's what you will be doing!
                         </p>
-                        <pre><code class="language-html">&lt;div class="philter
-  hue-rotate_330
-  contrast_125
-  saturate_125
-  brightness_60
-  drop-shadow_0_0_5_30"&gt;
+                        <pre><code class="language-html">&lt;div
+  data-philter-hue-rotate="330"
+  data-philter-contrast="125"
+  data-philter-saturate="125"
+  data-philter-brightness="60"
+  data-philter-drop-shadow="0 0 5 30"&gt;
 &lt;/div&gt;</code></pre>
-                      <p>Higher you can see the Philter classes that are used on the image on the left. The smaller image on the right retains only the drop-shadow class. Don't be confused by the syntax of that class, scroll further!</p>
+                      <p>Higher you can see the Philter attributes that are used on the image on the left. The smaller image on the right retains only the drop-shadow filter. It's that simple, scroll further to see even more goodies!</p>
                     </div>
                 </div>
             </div>
         </div>
         <div class="device-showcase">
             <div class="devices">
-                <div class="ipad-wrap wp1 philter hue-rotate_330 contrast_125 saturate_125 brightness_60 drop-shadow_0_0_5_30"></div>
-                <div class="iphone-wrap wp2 philter drop-shadow_0_0_5_30"></div>
+                <div data-philter-hue-rotate="330" data-philter-contrast="125" data-philter-saturate="125" data-philter-brightness="60" data-philter-drop-shadow="0 0 5 30" class="ipad-wrap wp1"></div>
+                <div data-philter-drop-shadow="0 0 5 30" class="iphone-wrap wp2"></div>
             </div>
         </div>
         <div class="responsive-feature-img"><img src="img/devices.png" alt="responsive devices"></div>
@@ -103,11 +103,11 @@
                     <div class="feature-list">
                         <h3>Turning on hover!</h3>
                         <p>Philter also supports hover effects. Check out the image on the right and then the code a little bit lower.</p>
-                        <pre><code class="language-html">&lt;div class="philter
-  grayscale_100_hover_0
-  drop-shadow_0_0_3_90_hover_0_0_10_60"&gt;
+                        <pre><code class="language-html">&lt;div
+  data-philter-grayscale="100 0"
+  data-philter-drop-shadow="0 0 3 90 0 0 10 60"&gt;
 &lt;/div&gt;</code></pre>
-                        <p>This nice effect of grayscale transition was created by Philter with one simple class. And some drop shadow, ofcourse.</p>
+                        <p>This nice effect of grayscale transition was created by Philter with one simple attribute. And some drop shadow, ofcourse.</p>
                         <p>Since we started talking about transitions, you can control their time in seconds by passing a parameter to Philter upon initiation. Like this:</p>
                         <pre>
                           <code class="language-javascript">
@@ -117,8 +117,54 @@ $.philter(0.5);</code>
                 </div>
             </div>
         </div>
-        <div class="macbook-wrap wp3 philter drop-shadow_0_0_3_90_hover_0_0_10_60 grayscale_100_hover_0"></div>
+        <div data-philter-grayscale="100 0" data-philter-drop-shadow="0 0 3 90 0 0 10 60" class="macbook-wrap wp3"></div>
         <div class="responsive-feature-img"><img src="img/by-greg-rakozy.png" alt="responsive devices"></div>
+    </section>
+    <section style="min-height:840px;" class="features section-padding" id="filters">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5 col-md-offset-7 filter-desc">
+                    <div class="feature-list" id="default">
+                        <h3>Introducing custom filters!</h3>
+                        <p>Have you ever wanted to apply some filters but they didn't work as you expected? Have you ever wondered why there's no particular filter? Well, Philter has you covered. Check out our custom filters! There ain't much of these filters yet but further on we will be introducing more and more of them.</p>
+                      <p>Btw, you can hover on the filters on the left to see their description on the right!</p>
+                    </div>
+                    <div style="display:none;" class="feature-list" id="color">
+                        <h3>Color overlay</h3>
+                        <p>Probably the simplest of them all - the color overlay. All it does is fills an element with given color at given opacity.
+                        </p>
+                        <pre><code class="language-html">&lt;div data-philter-color="#00ff00 50"&gt;&lt;/div&gt;</code></pre>
+                      <p>In its simplicity lies its power!</p>
+                    </div>
+                    <div style="display:none;" class="feature-list" id="unknown">
+                        <h3>???</h3>
+                        <p>Check regularly for more custom filters on Philter!
+                        </p>
+                        <pre><code class="language-html">&lt;div data-philter-???=""&gt;&lt;/div&gt;</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="filter-showcase">
+            <div class="filters">
+                <div class="row">
+                  <div class="col-md-4">
+                    <img src="img/filter-image.png" alt="" />
+                  </div>
+                  <div class="col-md-4">
+                    <img data-philter-color="green 50" src="img/filter-image.png" alt="" />
+                  </div>
+                  <div class="col-md-4">
+                    <img class="unknown" src="img/unknown-filter.png" alt="" />
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-4">
+                    <img class="unknown" src="img/unknown-filter.png" alt="" />
+                  </div>
+                </div>
+            </div>
+        </div>
     </section>
     <section class="hero-strip section-padding" id="download">
         <div class="container">
@@ -183,7 +229,7 @@ $.philter(0.5);</code>
     <script src="bower_components/retina.js/dist/retina.js"></script>
     <script src="js/jquery.fancybox.pack.js"></script>
     <script src="js/vendor/bootstrap.min.js"></script>
-    <script src="js/philter.min.js"></script>
+    <script src="js/philter/philter.min.js"></script>
     <script src="js/scripts.js"></script>
     <script src="js/jquery.flexslider-min.js"></script>
     <script src="bower_components/classie/classie.js"></script>

@@ -1,4 +1,7 @@
 $(document).ready(function() {
+
+	/***************** Philter ******************/
+
 	$.philter();
 
 	/***************** Waypoints ******************/
@@ -17,6 +20,30 @@ $(document).ready(function() {
 		$('.wp3').addClass('animated fadeInRight');
 	}, {
 		offset: '75%'
+	});
+
+	/***************** Showcase Hover ******************/
+
+	$('[data-philter-color="green 50"]').hover(function () {
+		$('.filter-desc').children().stop(true, true).fadeOut(200).promise().done(function () {
+			$('#color').stop(true, true).fadeIn(200);
+		});
+	},
+	function () {
+		$('.filter-desc').children().stop(true, true).fadeOut(200).promise().done(function () {
+			$('#default').stop(true, true).fadeIn(200);
+		});
+	});
+
+	$('.unknown').hover(function () {
+		$('.filter-desc').children().stop(true, true).fadeOut(200).promise().done(function () {
+			$('#unknown').stop(true, true).fadeIn(200);
+		});
+	},
+	function () {
+		$('.filter-desc').children().stop(true, true).fadeOut(200).promise().done(function () {
+			$('#default').stop(true, true).fadeIn(200);
+		});
 	});
 
 	/***************** Initiate Flexslider ******************/

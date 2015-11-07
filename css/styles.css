@@ -510,12 +510,25 @@ Features-stack
     position: absolute;
     bottom: -365px;
     right: 61%; }
+    .features .filter-showcase {
+      position: absolute;
+      top: 120px;
+      right: 50%;
+      left: 2%; }
 
 .features .responsive-feature-img, .features-extra .responsive-feature-img {
   display: none; }
 
 .devices {
   position: relative; }
+
+.filters {
+  position: relative; }
+
+.filters img {
+  width: 100%;
+  margin-bottom: 30px; }
+
 
 /* ==========================================================================
 .features-extra
