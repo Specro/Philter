@@ -2,7 +2,7 @@ $(document).ready(function() {
 
 	/***************** Philter ******************/
 
-	$.philter();
+	$.philter({url: 'http://specro.github.io/Philter/js'});
 
 	/***************** Waypoints ******************/
 
