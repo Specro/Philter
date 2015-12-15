@@ -1,4 +1,4 @@
-/* Philter v1.1.0 | (c) 2015 Liudas Dzisevicius | MIT License */
+/* Philter v1.1.1 | (c) 2015 Liudas Dzisevicius | MIT License */
 (function ($) {
 
   'use strict';
@@ -73,7 +73,7 @@
 
   $.philter = function (params) {
 
-    params = $.extend({transitionTime: 0.5, url: '../js'}, params);
+    params = $.extend({transitionTime: 0.5, url: '../js', tag: true}, params);
 
     var filters = [
       'blur',
@@ -94,8 +94,14 @@
     var styleString = '<style>';
     var selector = '';
 
+    if (params.tag) {
+      var tag = 'data-philter-';
+    } else {
+      var tag = 'data-';
+    }
+
     for (var i = 0; i < filters.length; i++) {
-      $('[data-philter-' + filters[i] + ']').each(function () {
+      $('[' + tag + filters[i] + ']').each(function () {
         if (elements.indexOf(this) < 0) {
           elements.push(this);
         }
@@ -103,9 +109,9 @@
     }
     for (var i = 0; i < elements.length; i++) {
       for (var j = 0; j < filters.length; j++) {
-        var filter = elements[i].getAttribute('data-philter-' + filters[j] + '');
+        var filter = elements[i].getAttribute(tag + filters[j] + '');
         if (filter) {
-          selector = selector + '[data-philter-' + filters[j] + '="' + filter + '"]';
+          selector = selector + '[' + tag + filters[j] + '="' + filter + '"]';
           filter = filter.split(' ');
           filter.unshift(filters[j]);
           var width = $(elements[i]).width();

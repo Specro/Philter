@@ -1,28 +1,40 @@
-# Philter v1.1.0
-Philter is a jQuery plugin giving you the power to control CSS filters with HTML data attributes.
+# Philter v1.1.1
+Philter is a JS plugin giving you the power to control CSS filters with HTML data attributes.
 Visit the [Demo page](http://specro.github.io/Philter/) for examples.
 ## Dependencies
-You probably already guessed it. You need jQuery for this one:
+Philter comes in two flavors - jQuery and vanilla JS. Choose the one you want just don't forget in jQuery case to include it:
 ```HTML
 <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
 ```
-You could also use Bower which is my prefered method.
+You could also use Bower which is my preferred method.
 ## Installation
 Download the plugin and move the 'philter' directory to your 'js' directory, then include it in your page:
 ```HTML
 <script src="js/philter/philter.min.js"></script>
+```
+or in jQuery
+```HTML
+<script src="js/philter/jquery.philter.min.js"></script>
 ```
 And that's it! You're ready to go!
 ## How To
 First initiate the plugin:
 ```HTML
 <script>
+  new Philter();
+</script>
+```
+or again in jQuery
+
+```HTML
+<script>
   $.philter();
 </script>
 ```
-You can pass 2 parameters to Philter:
-* transitionTime - the hover transition time of default CSS filters
+You can pass 3 parameters to Philter:
+* transitionTime - The hover transition time of default CSS filters
 * url - Philter loads custom SVG filters from external files. Its default path is '../js' where it reaches the filters in default 'philter' folder. If your directory differs somehow e. g. you use 'scripts' instead of 'js' directory, you should pass the path to 'philter' directory in the url parameter. You don't need the trailing slash!
+* tag - This enables the 'philter' part in data-philter-<filter>. If you don't use any plugins which use data attributes or they won't collide with Philter, you can set this to false to omit this part and shorten your markup.
 
 Now you can start using the filters. The plugin uses this kind of syntax format:
 ```
@@ -77,11 +89,16 @@ Drop shadow filter supports only black color because with it's already long clas
 ## Class version (1.0.0)
 First version of Philter was based on CSS classes but it was deprecated in favor of data attributes. You still can use and edit the 1.0.0 version that is located in the dist directory. For more info on that version read the README supplied with it.
 ## Compatibility
-Philter was developed on Chrome 46, Firefox 41 and Edge 20. The default CSS filters should be compatible with most versions of browsers that support filters. The custom filters support only Firefox and Chrome.
-You may notice glitching on Edge when more than one hover element is on the page.
+Philter was developed on Chrome 46, Firefox 41, Opera 34 and Edge 20. The default CSS filters should be compatible with most versions of browsers that support filters. The custom filters support only Firefox, Chrome and Opera.
+You may notice glitching on Edge when more than one hover element is on the page and loss of some filters when they are stacked on one element.
+## Issues
+This is mainly due to SVG filter limitations or complexities. It may be solved in the future... or it may not.
+* SVG filters don't stack with any other filters. That means one SVG filter for one HTML element.
+* SVG filters don't support transitions.
+* SVG filters have no idea what to do when you hover over them.
+
 ## WIP
-* Transitions on custom SVG filters
-* False element width or height being sent to custom SVG filters
 * More custom SVG filters
+
 ## License
 Philter is licensed under MIT License.
