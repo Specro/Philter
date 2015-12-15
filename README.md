@@ -99,6 +99,7 @@ This is mainly due to SVG filter limitations or complexities. It may be solved i
 
 ## WIP
 * More custom SVG filters
+* Masks in filter development
 
 ## License
 Philter is licensed under MIT License.

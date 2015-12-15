@@ -14,7 +14,7 @@
       "philter"
     ],
     "authors": [
-      { "name": "Liudas Dzisevicius", "email": "liudas.dzisevicius@gmail.com" },
+      { "name": "Liudas Dzisevicius", "email": "liudas.dzisevicius@gmail.com" }
     ],
     "license": "MIT",
     "ignore": [
