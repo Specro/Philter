@@ -1,5 +1,5 @@
 {
-    "name": "Philter",
+    "name": "philter",
     "description": "Philter is a jQuery plugin giving you the power to control CSS filters with HTML attributes",
     "main": "dist/philter.js",
     "moduleType": [
