@@ -1,32 +1,24 @@
 {
-    "name": "philter",
-    "description": "Philter is a jQuery plugin giving you the power to control CSS filters with HTML attributes",
-    "main": "dist/philter.js",
-    "moduleType": [
-      "globals"
-    ],
-    "keywords": [
-      "filters",
-      "CSS",
-      "HTML",
-      "JS",
-      "JavaScript",
-      "philter"
-    ],
-    "authors": [
-      { "name": "Liudas Dzisevicius", "email": "liudas.dzisevicius@gmail.com" }
-    ],
-    "license": "MIT",
-    "ignore": [
-        "source",
-        "spec",
-        ".bowerrc",
-        ".gitignore",
-        ".jshintignore",
-        ".jshintrc",
-        "bower.json",
-        "gruntfile.js",
-        "package.json",
-        "README.md"
-    ]
+  "name": "philter",
+  "description": "Philter is a jQuery plugin giving you the power to control CSS filters with HTML attributes",
+  "main": "dist/philter.js",
+  "moduleType": "globals",
+  "keywords": [
+    "filters",
+    "css",
+    "html",
+    "js",
+    "javascript",
+    "philter",
+    "plugin"
+  ],
+  "authors": [
+    "Liudas Dzisevicius <liudas.dzisevicius@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "bower_components",
+    "CONTRIBUTING.md",
+    "CHANGELOG.md"
+  ]
 }
