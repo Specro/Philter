@@ -1,4 +1,4 @@
-# Philter v1.1.1
+# Philter v1.1.2
 Philter is a JS plugin giving you the power to control CSS filters with HTML data attributes.
 Visit the [Demo page](http://specro.github.io/Philter/) for examples.
 ## Dependencies
@@ -70,7 +70,7 @@ Also Philter has pre-built custom filters:
 ```
 This one would overlay the element with #00ff00 color in 50% opacity.
 More filters are to come in the near future. You have any suggestions or know a filter that certainly has to be present in Philter? Just contact me or Elephento team.
-## More info on CSS filters
+## More info on filters
 Here's a list of filters that you can use and their limitations in Philter.
 * blur
 * grayscale
@@ -84,22 +84,24 @@ Here's a list of filters that you can use and their limitations in Philter.
 * drop-shadow - Supports only black color. Requires 4 values. The 4th value instead of color is opacity 0 to 100%.
 * svg - Custom SVG filter. Requires 1 value - filter ID.
 * color - Requires 2 values. Color and opacity. Doesn't support transitions.
+* vintage - Requires an integer from 1 to 6. Doesn't support transitions or opacity.
 
 Drop shadow filter supports only black color because with it's already long class it would be even longer with rgba implementation.
 ## Class version (1.0.0)
 First version of Philter was based on CSS classes but it was deprecated in favor of data attributes. You still can use and edit the 1.0.0 version that is located in the dist directory. For more info on that version read the README supplied with it.
 ## Compatibility
-Philter was developed on Chrome 46, Firefox 41, Opera 34 and Edge 20. The default CSS filters should be compatible with most versions of browsers that support filters. The custom filters support only Firefox, Chrome and Opera.
+Philter was developed on Chrome 46+, Firefox 41+, Opera 34 and Edge 20. The default CSS filters should be compatible with most versions of browsers that support filters. The custom filters support only Firefox, Chrome and Opera.
 You may notice glitching on Edge when more than one hover element is on the page and loss of some filters when they are stacked on one element.
 ## Issues
 This is mainly due to SVG filter limitations or complexities. It may be solved in the future... or it may not.
-* SVG filters don't stack with any other filters. That means one SVG filter for one HTML element.
+* On my recent tests with Chrome SVG filters stack with other filters but as always you may encounter bugs.
 * SVG filters don't support transitions.
-* SVG filters have no idea what to do when you hover over them.
+* SVG filters actually know what to do on hover but ^ and you may encounter other bugs (like flickering and so on).
 
 ## WIP
+I'm working on all sorts of stuff that involves this plugin and doesn't. So please bear with the way I develop Philter. If you have any suggestions ideas or just wanna say something you can send me an email at liudas.dzisevicius@gmail.com or tweet @Teraffo.
+* Node module + Gulp wrapper
 * More custom SVG filters
-* Masks in filter development
 
 ## License
 Philter is licensed under MIT License.

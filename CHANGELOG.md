@@ -1,6 +1,18 @@
 # Change Log
 
 ## [Unreleased]
+### Added
+- 6 new vintage SVG filters (vanilla JS version only).
+
+### Changed
+- Transition CSS rules are now applied only to Philter elements.
+
+### Fixed
+- Inconsistent height on SVG filters.
+
+## [1.1.2] - 2016-02-28
+### Added
+- Bower compatibility.
 
 ## [1.1.1] - 2015-12-15
 ### Added

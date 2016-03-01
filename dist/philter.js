@@ -15,7 +15,13 @@
       falsePath: 'Philter Error: you probably didn\'t declare the right path to philter folder!'
     };
     this.filterCount = {
-      'color': 0
+      'color': 0,
+      'vintage-1': 0,
+      'vintage-2': 0,
+      'vintage-3': 0,
+      'vintage-4': 0,
+      'vintage-5': 0,
+      'vintage-6': 0
     };
     this.filters = [
       'blur',
@@ -29,10 +35,12 @@
       'brightness',
       'drop-shadow',
       'svg',
-      'color'
+      'color',
+      'vintage'
     ];
     this.elements = [];
     this.styleString = '';
+    this.transitionString = '';
 
     if (arguments[0] && typeof arguments[0] === "object") {
       this.options = extendDefaults(defaults, arguments[0]);
@@ -43,7 +51,7 @@
     getElements.call(this);
     parseElements.call(this);
 
-    this.styleString += '*{transition:filter ' + this.options.transitionTime + 's,-webkit-filter ' + this.options.transitionTime + 's;}';
+    this.styleString += this.transitionString + '{transition:filter ' + this.options.transitionTime + 's,-webkit-filter ' + this.options.transitionTime + 's;}';
     sheet.innerHTML = this.styleString;
     document.head.appendChild(sheet);
   }
@@ -81,12 +89,12 @@
           } else {
             var selector = '[data-' + this.filters[j] + '="' + filter + '"]';
           }
-          var width = this.elements[i].offsetWidth;
-          var height = this.elements[i].offsetHeight;
+
+          this.transitionString == '' ? this.transitionString += selector : this.transitionString += ',' + selector;
 
           filter = filter.split(' ');
           filter.unshift(this.filters[j]);
-          filterStrings = getFilterString.call(this, filterStrings, filter, getUnits(filter[0]), width, height);
+          filterStrings = getFilterString.call(this, filterStrings, filter, getUnits(filter[0]));
         }
       }
 
@@ -100,7 +108,7 @@
     }
   }
 
-  function getFilterString (filterStrings, filter, units, width, height) {
+  function getFilterString (filterStrings, filter, units) {
     switch (filter[0]) {
       case 'drop-shadow':
         filterStrings[0] = filterStrings[0] + filter[0] + '(' + filter[1] + units + ' ' + filter[2] + units + ' ' + filter[3] + units + ' rgba(0,0,0,' + filter[4]*0.01 + ')) ';
@@ -120,14 +128,30 @@
         break;
       case 'color':
         ++this.filterCount['color'];
-        createColorFilter.call(this, filter[1], filter[2], width, height);
+        createColorFilter.call(this, filter[1], filter[2]);
         filterStrings[0] = filterStrings[0] + 'url(' + units + 'color-' + this.filterCount['color'] + ') ';
         if (filter[3] && filter[4]) {
           ++this.filterCount['color'];
-          createColorFilter.call(this, filter[3], filter[4], width, height);
+          createColorFilter.call(this, filter[3], filter[4]);
           filterStrings[1] = filterStrings[1] + 'url(' + units + 'color-' + this.filterCount['color'] + ') ';
         } else {
           filterStrings[1] = filterStrings[1] + 'url(' + units + 'color-' + this.filterCount['color'] + ') ';
+        }
+        break;
+      case 'vintage':
+        if (this.filterCount['vintage-' + filter[1]] == 0) {
+          createVintageFilter.call(this, filter[1]);
+        }
+        ++this.filterCount['vintage-' + filter[1]];
+        filterStrings[0] = filterStrings[0] + 'url(' + units + 'vintage-' + filter[1] + ') ';
+        if (filter[2]) {
+          if (this.filterCount['vintage-' + filter[2]] == 0) {
+            createVintageFilter.call(this, filter[2]);
+          }
+          ++this.filterCount['vintage-' + filter[1]];
+          filterStrings[1] = filterStrings[1] + 'url(' + units + 'vintage-' + filter[2] + ') ';
+        } else {
+          filterStrings[1] = filterStrings[1] + 'url(' + units + 'vintage-' + filter[1] + ') ';
         }
         break;
       default:
@@ -142,27 +166,56 @@
     return filterStrings;
   }
 
-  function createColorFilter(color, opacity, width, height, url) {
+  function createColorFilter(color, opacity) {
     var svg = document.getElementById('svg');
     if (!svg) {
       svg = document.createElement('div');
       svg.setAttribute('id', 'svg');
       svg.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" version="1.1"><defs></defs></svg>';
+      document.body.appendChild(svg);
+      svg = document.getElementById('svg');
     }
     opacity = opacity * 0.01;
     var xhr = new XMLHttpRequest();
-    xhr.open('GET', this.options.url + '/philter/svg/color.svg');
+    xhr.open('GET', this.options.url + '/svg/color.svg');
     xhr.send(null);
     xhr.onreadystatechange = function() {
       if (xhr.readyState === 4) {
         if (xhr.status === 200) {
           var data = xhr.response;
           if (data) {
-            svg.querySelector('defs').innerHTML = data;
+            svg.querySelector('defs').innerHTML += data;
             svg.querySelector('filter').setAttribute('id', 'color-' + this.filterCount['color']);
             var flood = svg.querySelector('feFlood');
-            setAttributes(flood, { 'flood-opacity': opacity, 'flood-color': color, 'width': width, 'height': height });
-            document.body.appendChild(svg);
+            setAttributes(flood, { 'flood-opacity': opacity, 'flood-color': color });
+          } else {
+            console.error(this.errors.falsePath);
+          }
+        } else if (xhr.status === 404) {
+          console.error(this.errors.falsePath);
+        }
+      }
+    }.bind(this);
+  }
+
+  function createVintageFilter(type) {
+    var svg = document.getElementById('svg');
+    if (!svg) {
+      svg = document.createElement('div');
+      svg.setAttribute('id', 'svg');
+      svg.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" version="1.1"><defs></defs></svg>';
+      document.body.appendChild(svg);
+      svg = document.getElementById('svg');
+    }
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', this.options.url + '/svg/vintage-' + type + '.svg');
+    xhr.send(null);
+    xhr.onreadystatechange = function() {
+      if (xhr.readyState === 4) {
+        if (xhr.status === 200) {
+          var data = xhr.response;
+          if (data) {
+            svg.querySelector('defs').innerHTML += data;
           } else {
             console.error(this.errors.falsePath);
           }
@@ -180,6 +233,7 @@
       'drop-shadow': 'px',
       'svg': '#',
       'color': '#',
+      'vintage': '#',
       'default': '%'
     };
 
@@ -197,6 +251,9 @@
         return units[filter];
         break;
       case 'color':
+        return units[filter];
+        break;
+      case 'vintage':
         return units[filter];
         break;
       default:

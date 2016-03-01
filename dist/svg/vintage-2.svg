@@ -1,0 +1,27 @@
+<filter id="vintage-2" primitiveUnits="objectBoundingBox">
+  <feColorMatrix type="matrix"
+  values="0.3333 0.3333 0.3333 0 0
+          0.3333 0.3333 0.3333 0 0
+          0.3333 0.3333 0.3333 0 0
+          0 0 0 1 0" result="grayscale" />
+  <feComponentTransfer x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB" result="gradientMap">
+    <feFuncR type="table" tableValues="0.2901960784313725 0.7294117647058824"/>
+    <feFuncG type="table" tableValues="0.3490196078431373 0.5098039215686275"/>
+    <feFuncB type="table" tableValues="0.3725490196078431 0.3294117647058824"/>
+    <feFuncA type="table" tableValues="1 1"/>
+  </feComponentTransfer>
+  <feBlend in="gradientMap" in2="SourceGraphic" mode="overlay" result="overlay" />
+  <feComponentTransfer x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB" result="curves">
+    <feFuncR type="table" tableValues="0.203921568627451 0.2784313725490196 0.5568627450980392 0.8588235294117647 1"/>
+    <feFuncG type="table" tableValues="0.196078431372549 0.3529411764705882 0.7568627450980392 1"/>
+    <feFuncB type="table" tableValues="0.2235294117647059 0.2745098039215686 0.3254901960784314 0.4274509803921569 0.5647058823529412 0.7529411764705882 1 1 1"/>
+    <feFuncA type="table" tableValues="1 1"/>
+  </feComponentTransfer>
+  <feColorMatrix type="saturate" values="0.65" result="desaturate" />
+  <feComponentTransfer x="0" y="0" width="100%" height="100%" color-interpolation-filters="linearRGB" result="exposure">
+    <feFuncR type="gamma" amplitude="1" exponent="1" offset="0.02" />
+    <feFuncG type="gamma" amplitude="1" exponent="1" offset="0.02" />
+    <feFuncB type="gamma" amplitude="1" exponent="1" offset="0.02" />
+    <feFuncA type="gamma" amplitude="1" exponent="1" offset="0" />
+  </feComponentTransfer>
+</filter>
