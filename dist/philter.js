@@ -51,7 +51,7 @@
     getElements.call(this);
     parseElements.call(this);
 
-    this.styleString += this.transitionString + '{transition:filter ' + this.options.transitionTime + 's,-webkit-filter ' + this.options.transitionTime + 's;}';
+    this.styleString += this.transitionString + '{transition:filter ' + this.options.transitionTime + 's,-webkit-filter ' + this.options.transitionTime + 's;}#svg{height:0;}';
     sheet.innerHTML = this.styleString;
     document.head.appendChild(sheet);
   }
@@ -75,6 +75,7 @@
 
   function parseElements() {
     var filterStrings = ['', ''];
+    var selector = '';
 
     for (var i = 0; i < this.elements.length; i++) {
       for (var j = 0; j < this.filters.length; j++) {
@@ -85,12 +86,10 @@
         }
         if (filter) {
           if (this.options.tag) {
-            var selector = '[data-philter-' + this.filters[j] + '="' + filter + '"]';
+            selector += '[data-philter-' + this.filters[j] + '="' + filter + '"]';
           } else {
-            var selector = '[data-' + this.filters[j] + '="' + filter + '"]';
+            selector += '[data-' + this.filters[j] + '="' + filter + '"]';
           }
-
-          this.transitionString == '' ? this.transitionString += selector : this.transitionString += ',' + selector;
 
           filter = filter.split(' ');
           filter.unshift(this.filters[j]);
@@ -98,6 +97,7 @@
         }
       }
 
+      this.transitionString == '' ? this.transitionString += selector : this.transitionString += ',' + selector;
       this.styleString += selector + '{filter:' + filterStrings[0] + ';-webkit-filter:' + filterStrings[0] + ';}';
       if (filterStrings[0] != filterStrings[1]) {
         this.styleString += selector + ':hover{filter:' + filterStrings[1] + ';-webkit-filter:' + filterStrings[1] + ';}';
@@ -128,11 +128,11 @@
         break;
       case 'color':
         ++this.filterCount['color'];
-        createColorFilter.call(this, filter[1], filter[2]);
+        createColorFilter.call(this, filter[1], filter[2], this.filterCount['color']);
         filterStrings[0] = filterStrings[0] + 'url(' + units + 'color-' + this.filterCount['color'] + ') ';
         if (filter[3] && filter[4]) {
           ++this.filterCount['color'];
-          createColorFilter.call(this, filter[3], filter[4]);
+          createColorFilter.call(this, filter[3], filter[4], this.filterCount['color']);
           filterStrings[1] = filterStrings[1] + 'url(' + units + 'color-' + this.filterCount['color'] + ') ';
         } else {
           filterStrings[1] = filterStrings[1] + 'url(' + units + 'color-' + this.filterCount['color'] + ') ';
@@ -166,12 +166,12 @@
     return filterStrings;
   }
 
-  function createColorFilter(color, opacity) {
+  function createColorFilter(color, opacity, id) {
     var svg = document.getElementById('svg');
     if (!svg) {
       svg = document.createElement('div');
       svg.setAttribute('id', 'svg');
-      svg.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" version="1.1"><defs></defs></svg>';
+      svg.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="0" height="0"><defs></defs></svg>';
       document.body.appendChild(svg);
       svg = document.getElementById('svg');
     }
@@ -184,9 +184,9 @@
         if (xhr.status === 200) {
           var data = xhr.response;
           if (data) {
+            data = data.replace('color', 'color-' + id);
             svg.querySelector('defs').innerHTML += data;
-            svg.querySelector('filter').setAttribute('id', 'color-' + this.filterCount['color']);
-            var flood = svg.querySelector('feFlood');
+            var flood = svg.querySelector('filter[id="color-' + id + '"]').children[0];
             setAttributes(flood, { 'flood-opacity': opacity, 'flood-color': color });
           } else {
             console.error(this.errors.falsePath);
@@ -203,7 +203,7 @@
     if (!svg) {
       svg = document.createElement('div');
       svg.setAttribute('id', 'svg');
-      svg.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" version="1.1"><defs></defs></svg>';
+      svg.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="0" height="0"><defs></defs></svg>';
       document.body.appendChild(svg);
       svg = document.getElementById('svg');
     }

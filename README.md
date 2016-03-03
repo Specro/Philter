@@ -1,4 +1,4 @@
-# Philter v1.1.2
+# Philter v1.2.0
 Philter is a JS plugin giving you the power to control CSS filters with HTML data attributes.
 Visit the [Demo page](http://specro.github.io/Philter/) for examples.
 ## Dependencies

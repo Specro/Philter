@@ -1,6 +1,8 @@
 # Change Log
 
 ## [Unreleased]
+
+## [1.2.0] - 2016-03-03
 ### Added
 - 6 new vintage SVG filters (vanilla JS version only).
 
@@ -9,6 +11,9 @@
 
 ### Fixed
 - Inconsistent height on SVG filters.
+- CSS rules being applied to the first selector of the element and breaking on elements with same selectors.
+- SVG adding to body height.
+- Filter count increasing faster than data is being returned from the server causing wrong filter ids.
 
 ## [1.1.2] - 2016-02-28
 ### Added
