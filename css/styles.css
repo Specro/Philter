@@ -91,6 +91,10 @@ Global Styles
   display: table;
   clear: both; }
 
+.hidden {
+  display: none;
+}
+
 .no-padding {
   padding: 0; }
 
@@ -352,9 +356,15 @@ Hero
 ========================================================================== */
 .hero {
   min-height: 900px;
-  background: url("../img/hero.jpg") center center;
-  background-size: cover;
   position: relative; }
+  .hero .bg {
+    min-height: 900px;
+    width: 100%;
+    position: absolute;
+    background: url("../img/hero.jpg") center center;
+    background-size: cover;
+    z-index: -1;
+  }
   .hero .down-arrow a {
     color: #fff; }
   .hero h1 {
@@ -529,6 +539,14 @@ Features-stack
   width: 100%;
   margin-bottom: 30px; }
 
+.filter-selection,
+.filter-code {
+  margin: 15px 0;
+}
+
+.filter-selection input {
+  margin: 0 10px;
+}
 
 /* ==========================================================================
 .features-extra
@@ -551,7 +569,6 @@ Features-stack
 .hero-strip
 ========================================================================== */
 .hero-strip {
-  margin-top: 120px;
   background: #333844 url("../img/polygonal-bg.jpg") no-repeat center center;
   padding-bottom: 190px;
   position: relative; }

@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="css/etline-font.css">
     <link rel="stylesheet" href="bower_components/animate.css/animate.min.css">
     <link rel="stylesheet" href="bower_components/prism/themes/prism-okaidia.css">
+    <link rel="stylesheet" href="bower_components/twentytwenty/css/twentytwenty.css">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
@@ -31,6 +32,9 @@
     <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
     <section class="hero">
+        <div class="bg">
+
+        </div>
         <section class="navigation">
             <header>
                 <div class="header-content">
@@ -90,7 +94,7 @@
         </div>
         <div class="device-showcase">
             <div class="devices">
-                <div data-philter-hue-rotate="330" data-philter-contrast="125" data-philter-saturate="125" data-philter-brightness="60" data-philter-drop-shadow="0 0 5 30" class="ipad-wrap wp1"></div>
+                <div data-philter-drop-shadow="0 0 5 30" data-philter-contrast="125" data-philter-saturate="125" data-philter-brightness="60" data-philter-hue-rotate="330" class="ipad-wrap wp1"></div>
                 <div data-philter-drop-shadow="0 0 5 30" class="iphone-wrap wp2"></div>
             </div>
         </div>
@@ -124,45 +128,59 @@ new Philter({transitionTime: 0.5});</code>
         <div class="container">
             <div class="row">
                 <div class="col-md-5 col-md-offset-7 filter-desc">
-                    <div class="feature-list" id="default">
+                    <div class="feature-list">
                         <h3>Introducing custom filters!</h3>
                         <p>Have you ever wanted to apply some filters but they didn't work as you expected? Have you ever wondered why there's no particular filter? Well, Philter has you covered. Check out our custom filters! There ain't much of these filters yet but further on we will be introducing more and more of them.</p>
-                      <p>Btw, you can hover on the filters on the left to see their description on the right!</p>
-                    </div>
-                    <div style="display:none;" class="feature-list" id="color">
-                        <h3>Color overlay</h3>
-                        <p>Probably the simplest of them all - the color overlay. All it does is fills an element with given color at given opacity.
-                        </p>
-                        <pre><code class="language-html">&lt;div data-philter-color="#00ff00 50"&gt;&lt;/div&gt;</code></pre>
-                      <p>In its simplicity lies its power!</p>
-                    </div>
-                    <div style="display:none;" class="feature-list" id="unknown">
-                        <h3>???</h3>
-                        <p>Check regularly for more custom filters on Philter!
-                        </p>
-                        <pre><code class="language-html">&lt;div data-philter-???=""&gt;&lt;/div&gt;</code></pre>
+                        <pre><code class="language-html filter-code">&lt;div data-philter-color="#235668 80"&gt;&lt;/div&gt;</code></pre>
+                        <div class="row">
+                          <div class="col-md-6">
+                            <div class="filter-selection">
+                              <input type="radio" name="filter" value="color" checked /> Color<br>
+                            </div>
+                          </div>
+                          <div class="col-md-6">
+                            <div class="filter-selection">
+                              <input type="radio" name="filter" value="vintage-1" /> Vintage 1<br>
+                              <input type="radio" name="filter" value="vintage-2" /> Vintage 2<br>
+                              <input type="radio" name="filter" value="vintage-3" /> Vintage 3<br>
+                              <input type="radio" name="filter" value="vintage-4" /> Vintage 4<br>
+                              <input type="radio" name="filter" value="vintage-5" /> Vintage 5<br>
+                              <input type="radio" name="filter" value="vintage-6" /> Vintage 6
+                            </div>
+                          </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
         <div class="filter-showcase">
-            <div class="filters">
-                <div class="row">
-                  <div class="col-md-4">
-                    <img src="img/filter-image.png" alt="" />
-                  </div>
-                  <div class="col-md-4">
-                    <img data-philter-color="green 50" src="img/filter-image.png" alt="" />
-                  </div>
-                  <div class="col-md-4">
-                    <img class="unknown" src="img/unknown-filter.png" alt="" />
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-md-4">
-                    <img class="unknown" src="img/unknown-filter.png" alt="" />
-                  </div>
-                </div>
+            <div class="filters color">
+                <img src="img/by-alex-wong.jpg" alt="" />
+                <img src="img/by-alex-wong.jpg" data-philter-color="#235668 80" alt="" />
+            </div>
+            <div class="filters vintage-1">
+                <img src="img/by-alex-wong.jpg" alt="" />
+                <img src="img/by-alex-wong.jpg" data-philter-vintage="1" alt="" />
+            </div>
+            <div class="filters vintage-2">
+                <img src="img/by-alex-wong.jpg" alt="" />
+                <img src="img/by-alex-wong.jpg" data-philter-vintage="2" alt="" />
+            </div>
+            <div class="filters vintage-3">
+                <img src="img/by-alex-wong.jpg" alt="" />
+                <img src="img/by-alex-wong.jpg" data-philter-vintage="3" alt="" />
+            </div>
+            <div class="filters vintage-4">
+                <img src="img/by-alex-wong.jpg" alt="" />
+                <img src="img/by-alex-wong.jpg" data-philter-vintage="4" alt="" />
+            </div>
+            <div class="filters vintage-5">
+                <img src="img/by-alex-wong.jpg" alt="" />
+                <img src="img/by-alex-wong.jpg" data-philter-vintage="5" alt="" />
+            </div>
+            <div class="filters vintage-6">
+                <img src="img/by-alex-wong.jpg" alt="" />
+                <img src="img/by-alex-wong.jpg" data-philter-vintage="6" alt="" />
             </div>
         </div>
     </section>
@@ -190,6 +208,7 @@ new Philter({transitionTime: 0.5});</code>
                       <h5>RoundedHexagon</h5>
                       <h5>Anthony Delanoix</h5>
                       <h5>Greg Rakozy</h5>
+                      <h5>Alex Wong</h5>
                       <h5>Maelle Keita</h5>
                       <p>Also a shout-out to people at VU. You the best!</p>
                 </div>
@@ -231,12 +250,13 @@ new Philter({transitionTime: 0.5});</code>
     <script src="js/jquery.fancybox.pack.js"></script>
     <script src="js/vendor/bootstrap.min.js"></script>
     <script src="js/philter/philter.min.js"></script>
-    <script src="js/imagesloaded.pkgd.min.js"></script>
-    <script src="js/scripts.js"></script>
     <script src="js/jquery.flexslider-min.js"></script>
     <script src="bower_components/classie/classie.js"></script>
     <script src="bower_components/jquery-waypoints/lib/jquery.waypoints.min.js"></script>
     <script src="bower_components/prism/prism.js"></script>
+    <script src="bower_components/twentytwenty/js/jquery.event.move.js"></script>
+    <script src="bower_components/twentytwenty/js/jquery.twentytwenty.js"></script>
+    <script src="js/scripts.js"></script>
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
     <script>
     (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=

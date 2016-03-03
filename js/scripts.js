@@ -2,9 +2,7 @@ $(document).ready(function() {
 
 	/***************** Philter ******************/
 
-	$('body').imagesLoaded(function() {
-		new Philter({url: 'http://specro.github.io/Philter/js'});
-	});	
+	new Philter({url: 'http://specro.github.io/Philter/js/philter'});
 
 	/***************** Waypoints ******************/
 
@@ -24,28 +22,24 @@ $(document).ready(function() {
 		offset: '75%'
 	});
 
-	/***************** Showcase Hover ******************/
+	/***************** Showcase ******************/
 
-	$('[data-philter-color="green 50"]').hover(function () {
-		$('.filter-desc').children().stop(true, true).fadeOut(200).promise().done(function () {
-			$('#color').stop(true, true).fadeIn(200);
-		});
-	},
-	function () {
-		$('.filter-desc').children().stop(true, true).fadeOut(200).promise().done(function () {
-			$('#default').stop(true, true).fadeIn(200);
-		});
-	});
+	$('.filters').twentytwenty();
+	$('.filters').hide('fast');
+	$('.filters.color').show('fast');
 
-	$('.unknown').hover(function () {
-		$('.filter-desc').children().stop(true, true).fadeOut(200).promise().done(function () {
-			$('#unknown').stop(true, true).fadeIn(200);
-		});
-	},
-	function () {
-		$('.filter-desc').children().stop(true, true).fadeOut(200).promise().done(function () {
-			$('#default').stop(true, true).fadeIn(200);
-		});
+	$('.filter-selection input').change(function() {
+    if(this.checked) {
+			var filter = $(this).val();
+			$('.filters').hide('slow');
+			$('.filters.' + filter).show('slow');
+			if (filter.match('^vintage')) {
+				$('.filter-code').text('<div data-philter-vintage="' + filter.substr(filter.length - 1) + '"></div>');
+			} else {
+				$('.filter-code').text('<div data-philter-color="#235668 80"></div>');
+			}
+			Prism.highlightAll();
+    }
 	});
 
 	/***************** Initiate Flexslider ******************/
