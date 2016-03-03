@@ -23,10 +23,11 @@ $(document).ready(function() {
 	});
 
 	/***************** Showcase ******************/
-
-	$('.filters').twentytwenty();
-	$('.filters').hide('fast');
-	$('.filters.color').show('fast');
+	$(window).load(function() {
+		$('.filters').twentytwenty();
+		$('.filters').hide('fast');
+		$('.filters.color').show('fast');
+	});
 
 	$('.filter-selection input').change(function() {
     if(this.checked) {
