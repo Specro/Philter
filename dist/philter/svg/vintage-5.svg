@@ -1,0 +1,18 @@
+<filter id="vintage-5" primitiveUnits="objectBoundingBox">
+  <feComponentTransfer x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB" result="levels">
+    <feFuncR type="table" tableValues="0.1137254901960784 0.8745098039215686"/>
+    <feFuncG type="table" tableValues="0.1137254901960784 0.8745098039215686"/>
+    <feFuncB type="table" tableValues="0.1137254901960784 0.8745098039215686"/>
+  </feComponentTransfer>
+  <feBlend in="levels" in2="SourceGraphic" mode="screen" result="screen" />
+  <feComponentTransfer x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB" result="curves">
+    <feFuncR type="table" tableValues="0 0 0 0 0.3607843137254902 0.6313725490196078 0.7568627450980392 0.8980392156862745 1"/>
+    <feFuncG type="table" tableValues="0 0.2431372549019608 1"/>
+    <feFuncB type="table" tableValues="0.1803921568627451 0.392156862745098 0.5490196078431373 0.8431372549019608"/>
+  </feComponentTransfer>
+  <feComponentTransfer x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB" result="levels2">
+    <feFuncR type="table" tableValues="0.0862745098039216 0.8588235294117647"/>
+    <feFuncG type="table" tableValues="0.0862745098039216 0.8588235294117647"/>
+    <feFuncB type="table" tableValues="0.0862745098039216 0.8588235294117647"/>
+  </feComponentTransfer>
+</filter>

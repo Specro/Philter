@@ -1,0 +1,4 @@
+<filter id="color" primitiveUnits="objectBoundingBox">
+  <feFlood x="0" y="0" width="100%" height="100%" flood-opacity="0.5" flood-color="black" in="SourceGraphic" result="overlay"/>
+  <feBlend in="overlay" in2="SourceGraphic"/>
+</filter>

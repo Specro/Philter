@@ -1,6 +1,9 @@
 # Change Log
 
 ## [Unreleased]
+### Added
+- Node module
+- CLI
 
 ## [1.2.0] - 2016-03-03
 ### Added

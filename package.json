@@ -1,0 +1,30 @@
+{
+  "name": "philter",
+  "version": "1.3.0",
+  "description": "Philter is a JS plugin giving you the power to control CSS filters with HTML data attributes. Visit the [Demo page](http://specro.github.io/Philter/) for examples. ## Dependencies Philter comes in two flavors - jQuery and vanilla JS. Choose the one you want just don't forget in jQuery case to include it: ```HTML <script src=\"http://code.jquery.com/jquery-2.1.4.min.js\"></script> ``` You could also use Bower which is my preferred method. ## Installation Download the plugin and move the 'philter' directory to your 'js' directory, then include it in your page: ```HTML <script src=\"js/philter/philter.min.js\"></script> ``` or in jQuery ```HTML <script src=\"js/philter/jquery.philter.min.js\"></script> ``` And that's it! You're ready to go! ## How To First initiate the plugin: ```HTML <script>   new Philter(); </script> ``` or again in jQuery",
+  "main": "index.js",
+  "bin": {
+    "philter": "bin/philter.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Specro/Philter.git"
+  },
+  "author": "Liudas Dzisevicius",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Specro/Philter/issues"
+  },
+  "homepage": "https://github.com/Specro/Philter#readme",
+  "dependencies": {
+    "bluebird": "^3.4.6",
+    "cheerio": "^0.22.0",
+    "commander": "^2.9.0",
+    "fs-extra": "^0.30.0",
+    "is-html": "^1.0.0",
+    "lodash": "^4.16.2"
+  }
+}
