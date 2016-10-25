@@ -1,9 +1,14 @@
 # Change Log
 
 ## [Unreleased]
+## [1.3.0] - 2016-10-25
 ### Added
 - Node module
 - CLI
+
+### Removed
+- jQuery version
+- CSS class version
 
 ## [1.2.0] - 2016-03-03
 ### Added
