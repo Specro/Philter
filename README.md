@@ -120,6 +120,7 @@ There are 6 vintage filters:
 * Close to 3 but a bit less brightness and more green.
 * Close to 2 but mixed with violet. Gives a sweet/daydream look.
 * Grayscale but better (IMO :))
+
 ## Compatibility
 Philter was developed and tested on Chrome 46+, Firefox 41+, Opera 34+ and Edge 20+. The default CSS filters should be compatible with most versions of browsers that support filters. The custom filters are supported only by Firefox, Chrome and Opera. You may notice glitching on Edge when more than one hover element is on the page and loss of some filters when they are stacked on one element.
 ## Issues
