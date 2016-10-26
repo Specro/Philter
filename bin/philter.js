@@ -19,9 +19,11 @@ let html = program.html?program.args[0]:program.args
 philter(html, {tag:!program.noTag}, (css, svg) => {
   saveData(program.css, css, 'css', (dir) => {
     console.log(`CSS saved to ${dir}`)
-    saveData(program.svg, svg, 'svg', (dir) => {
-      console.log(`SVG saved to ${dir}`)
-    })
+    if (svg) {
+      saveData(program.svg, svg, 'svg', (dir) => {
+        console.log(`SVG saved to ${dir}`)
+      })
+    }  
   })
 })
 

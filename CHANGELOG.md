@@ -1,6 +1,20 @@
 # Change Log
 
 ## [Unreleased]
+
+## [1.3.1] - 2016-10-26
+### Added
+- Error if first argument is not an array or a string
+- Tests
+
+### Changed
+- Compressed SVG filters to one line
+
+### Fixed
+- Default SVG filter generating wrong CSS
+- Empty SVG element returned if no SVG was generated
+- CLI: Saving SVG when no SVG was generated
+
 ## [1.3.0] - 2016-10-25
 ### Added
 - Node module

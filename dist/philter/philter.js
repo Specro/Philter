@@ -1,4 +1,4 @@
-/* Philter v1.3.0 | (c) 2015-2016 Liudas Dzisevicius | MIT License */
+/* Philter v1.3.1 | (c) 2015-2016 Liudas Dzisevicius | MIT License */
 (function() {
 
   'use strict';
