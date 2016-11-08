@@ -6,6 +6,10 @@ const fs = require('fs-extra')
 const path = require('path')
 const program = require('commander')
 
+function list(val) {
+  return val.split(',')
+}
+
 program
 .version('1.2.0')
 .usage('[options] <file ...>')
@@ -13,17 +17,24 @@ program
 .option('-s, --svg <dir>', 'SVG directory or svg/html file to append to')
 .option('-c, --css <dir>', 'CSS directory or css/html file to append to')
 .option('-H, --html', 'Pass HTML instead of filenames')
+.option('-D, --custom-filter-dir <dir>', 'Custom SVG filter directory')
+.option('-F, --custom-filters <list>', 'Comma-separated custom filter list', list)
 .parse(process.argv)
 
+if (program.customFilters && !program.customFilterDir) {
+  throw new Error('Philter: Custom filter directory not found')
+}
 let html = program.html?program.args[0]:program.args
-philter(html, {tag:!program.noTag}, (css, svg) => {
+let customFilterDir = program.customFilterDir?program.customFilterDir:''
+let customFilters = program.customFilters?program.customFilters:[]
+philter(html, {tag:!program.noTag, customFilterDir:customFilterDir, customFilters:customFilters}, (css, svg) => {
   saveData(program.css, css, 'css', (dir) => {
     console.log(`CSS saved to ${dir}`)
     if (svg) {
       saveData(program.svg, svg, 'svg', (dir) => {
         console.log(`SVG saved to ${dir}`)
       })
-    }  
+    }
   })
 })
 

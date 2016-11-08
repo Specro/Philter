@@ -1,5 +1,5 @@
-const expect = require('chai').expect;
-const philter = require('../lib/index');
+const expect = require('chai').expect
+const philter = require('../lib/index')
 
 describe('Module', () => {
   it('should return css and svg as strings', function() {
@@ -22,6 +22,9 @@ describe('Module', () => {
   })
   it('should throw an Error when no callback is given', function() {
     expect(philter.bind(philter, '<div></div>')).to.throw('Philter: Callback must be a function')
+  })
+  it('should throw an Error when no custom filter directory is given', function() {
+    expect(philter.bind(philter, '<div data-philter-custom="test"></div>', {customFilters: ['test']}, (css, svg) => {})).to.throw('Philter: No custom filter directory found')
   })
 })
 
@@ -95,13 +98,19 @@ describe('Filters', () => {
   it('color', function() {
     philter('<div data-philter-color="black 10"></div>', (css, svg)=> {
       expect(css).to.equal('[data-philter-color="black 10"]{filter:url(#color-1);}')
-      expect(svg.replace(/\r?\n|\r/g, '')).to.equal('<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="0" height="0" id="philter-svg"><defs><filter id="color-1" primitiveunits="objectBoundingBox"><feflood x="0" y="0" width="100%" height="100%" flood-opacity="0.1" flood-color="black" in="SourceGraphic" result="overlay"><feblend in="overlay" in2="SourceGraphic"></feblend></feflood></filter></defs></svg>')
+      expect(svg.replace(/\r?\n|\r/g, '')).to.equal('<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="0" height="0" id="philter-svg"><defs><filter id="color-1" primitiveunits="objectBoundingBox"><feflood x="0" y="0" width="100%" height="100%" flood-opacity="0.1" flood-color="black" in="SourceGraphic" result="overlay"></feflood><feblend in="overlay" in2="SourceGraphic"></feblend></filter></defs></svg>')
     })
   })
   it('vintage', function() {
     philter('<div data-philter-vintage="3"></div>', (css, svg)=> {
       expect(css).to.equal('[data-philter-vintage="3"]{filter:url(#vintage-3);}')
       expect(svg.replace(/\r?\n|\r/g, '')).to.equal('<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="0" height="0" id="philter-svg"><defs><filter id="vintage-3" primitiveUnits="objectBoundingBox"><feComponentTransfer x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB" result="curves"><feFuncR type="table" tableValues="0.196078431372549 0.2196078431372549 0.4352941176470588 0.7843137254901961 1"/><feFuncG type="table" tableValues="0 0.3588235294117647 0.6137254901960784 0.9 1"/><feFuncB type="table" tableValues="0.3196078431372549 0.4333333333333333 0.5156862745098039 0.5980392156862745 0.6882352941176471 0.7745098039215686 0.8529411764705882 0.9823529411764706 1"/><feFuncA type="table" tableValues="1 1"/></feComponentTransfer><feColorMatrix type="saturate" values="0.95" result="desaturate" /><feComponentTransfer x="0" y="0" width="100%" height="100%" color-interpolation-filters="linearRGB" result="exposure"><feFuncR type="gamma" amplitude="1" exponent="1" offset="0.03" /><feFuncG type="gamma" amplitude="1" exponent="1" offset="0.03" /><feFuncB type="gamma" amplitude="1" exponent="1" offset="0.03" /><feFuncA type="gamma" amplitude="1" exponent="1" offset="0" /></feComponentTransfer></filter></defs></svg>')
+    })
+  })
+  it('custom', function() {
+    philter('<div data-philter-custom="test"></div>', {customFilterDir: './test/', customFilters: ['test']}, (css, svg) => {
+      expect(css).to.equal('[data-philter-custom="test"]{filter:url(#test);}')
+      expect(svg.replace(/\r?\n|\r/g, '')).to.equal('<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="0" height="0" id="philter-svg"><defs><filter id="test" primitiveUnits="objectBoundingBox"></filter></defs></svg>')
     })
   })
 })

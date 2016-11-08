@@ -1,4 +1,6 @@
-# Philter v1.3.1
+# Philter v1.4.0
+[![npm](https://img.shields.io/npm/v/philter.svg)](https://www.npmjs.com/package/philter) [![dependencies](https://david-dm.org/specro/philter.svg)](https://david-dm.org/specro/philter)
+
 Philter is a JS plugin giving you the power to control CSS filters with HTML data attributes.
 Visit the [Demo page](http://specro.github.io/Philter/) for examples.
 
@@ -33,16 +35,19 @@ You can pass 3 parameters to Philter:
 ```js
 const philter = require('philter')
 
-philter(['index.html', 'post.html'], { tag: true } (css, svg) => {
+philter(['index.html', 'post.html'], { tag: true, customFilterDir: '', customFilters: [] } (css, svg) => {
   console.log('CSS: ', css)
   console.log('SVG: ', svg)
 })
 ```
-Node has only the tag option.
+You can also pass 3 parameters to philter:
+* tag - boolean - This enables the 'philter' part in data-philter-<filter>. If you don't use any plugins which use data attributes or they won't collide with Philter, you can set this to false to omit this part and shorten your markup.
+* customFilterDir - string - Directory where custom filters are stored.
+* customFilters - array - Array of custom filter names.
 
 ### CLI
 ```shell
-philter index.html post.html -c ./css
+philter index.html post.html -c index.html -s index.html
 ```
 
 ```
@@ -50,12 +55,14 @@ Usage: philter [options] <file ...>
 
 Options:
 
-  -h, --help       output usage information
-  -V, --version    output the version number
-  -n, --no-tag     No "philter" in data attributes
-  -s, --svg <dir>  SVG directory or svg/html file to append to
-  -c, --css <dir>  CSS directory or css/html file to append to
-  -H, --html       Pass HTML instead of filenames
+  -h, --help                     output usage information
+  -V, --version                  output the version number
+  -n, --no-tag                   No "philter" in data attributes
+  -s, --svg <dir>                SVG directory or svg/html file to append to
+  -c, --css <dir>                CSS directory or css/html file to append to
+  -H, --html                     Pass HTML instead of filenames
+  -D, --custom-filter-dir <dir>  Custom SVG filter directory
+  -F, --custom-filters <list>    Custom filters
 
 ```
 
@@ -106,12 +113,13 @@ Here's a list of filters that you can use and their limitations in Philter.
 * invert
 * opacity
 * brightness
-* drop-shadow - Supports only black color in browser version. Requires 4 values. The 4th value instead of color is opacity 0 to 100%.
+* drop-shadow - Requires 4 values. In the browser the 4th value instead of color is opacity 0 to 100%, color is locked to black.
 * svg - Custom SVG filter. Requires 1 value - filter ID.
 * color - Requires 2 values. Color and opacity.
 * vintage - Requires an integer from 1 to 6.
+* custom - Requires a string - custom filter name.
 
-Drop shadow filter supports only black color because with it's already long class it would be even longer with rgba implementation.
+Drop shadow filter in browser supports only black color because with it's already long class it would be even longer with rgba implementation.
 ### Vintage
 There are 6 vintage filters:
 * Rises contrast. Brings out details and colors.
@@ -120,6 +128,13 @@ There are 6 vintage filters:
 * Close to 3 but a bit less brightness and more green.
 * Close to 2 but mixed with violet. Gives a sweet/daydream look.
 * Grayscale but better (IMO :))
+
+### Custom
+You can use filters that you wrote by yourself in NPM/CLI version by using the custom tag like this:
+```html
+data-philter-cutom="<custom-filter-name>"
+```
+If using custom filters you must supply the directory where they're stored and custom filter names in the options. The file of the filter must have that name and its id must be that same name.
 
 ## Compatibility
 Philter was developed and tested on Chrome 46+, Firefox 41+, Opera 34+ and Edge 20+. The default CSS filters should be compatible with most versions of browsers that support filters. The custom filters are supported only by Firefox, Chrome and Opera. You may notice glitching on Edge when more than one hover element is on the page and loss of some filters when they are stacked on one element.
