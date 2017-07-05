@@ -1,0 +1,70 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Philter Experimental</title>
+		<style id="philter-css">[data-philter-anaglyph="0.8"]{filter:url(#anaglyph-1);}</style></head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" href="img/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="img/favicon-16x16.png" sizes="16x16" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body>
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+
+				<!-- Wrapper -->
+					<div id="wrapper">
+
+						<!-- Panel (Banner) -->
+							<section class="panel banner">
+								<div class="content color-main span-3-75 align-center">
+									<img src="images/philter.png" class="logo" alt="">
+									<h1 class="">Experimental</h1>
+									<!--<ul class="actions">
+										<li><a href="#first" class="button special color1 circle icon fa-angle-right">Next</a></li>
+									</ul>-->
+								</div>
+							</section>
+
+						<!-- Panel (Spotlight) -->
+							<section class="panel spotlight medium right" id="first">
+								<div class="content span-7">
+									<h2 class="major">Anaglyph</h2>
+									<p>Works only on certain browsers. Also has a cutoff on the left side that depends on the size of the offset.</p>
+									<input class="range-slider" type="range" max="280" min="0" name="anaglyph" value="80">
+								</div>
+								<div class="image filtered tinted" data-position="top left">
+									<img data-philter-anaglyph="0.8" src="images/caroline-veronez.jpg" alt="" />
+								</div>
+							</section>
+
+					</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/main.js"></script>
+
+			<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="0" height="0" id="philter-svg"><defs><filter id="anaglyph-1" primitiveunits="objectBoundingBox">
+			<fecomponenttransfer x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB" result="red">
+				<fefuncr type="table" tablevalues="0 1"/>
+				<fefuncg type="table" tablevalues="0 0"/>
+				<fefuncb type="table" tablevalues="0 0"/>
+			</fecomponenttransfer>
+			<fecomponenttransfer x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB" in="SourceGraphic" result="blue">
+				<fefuncr type="table" tablevalues="0 0"/>
+				<fefuncg type="table" tablevalues="0 1"/>
+				<fefuncb type="table" tablevalues="0 1"/>
+			</fecomponenttransfer>
+			<feoffset in="red" dx="0.008" result="redOff"/>
+			<feblend in2="blue" in="redOff" x="0" y="0" mode="difference"/>
+			</filter>
+			</defs></svg>
+	</body>
+</html>

@@ -1,270 +1,198 @@
-<!doctype html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
-<head>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
     <meta charset="utf-8">
-    <!--<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">-->
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Philter - A JS plugin for CSS filters</title>
-    <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="apple-touch-icon" href="apple-touch-icon.png">
-    <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32" />
-    <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16" />
-    <link rel="stylesheet" href="css/normalize.min.css">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/jquery.fancybox.css">
-    <link rel="stylesheet" href="css/flexslider.css">
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/queries.css">
-    <link rel="stylesheet" href="css/etline-font.css">
-    <link rel="stylesheet" href="bower_components/animate.css/animate.min.css">
-    <link rel="stylesheet" href="bower_components/prism/themes/prism-okaidia.css">
-    <link rel="stylesheet" href="bower_components/twentytwenty/css/twentytwenty.css">
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-    <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
-    <script src="bower_components/jquery/dist/jquery.min.js"></script>
-</head>
-<body id="top">
-    <!--[if lt IE 8]>
-    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-    <![endif]-->
-    <section class="hero">
-        <div class="bg">
+    <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" href="img/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="img/favicon-16x16.png" sizes="16x16" />
+    <title>Philter - Control CSS filters with HTML attributes</title>
+    <meta name="description" content="Philter is a JS plugin giving you the power to control CSS filters with HTML attributes">
 
-        </div>
-        <section class="navigation">
-            <header>
-                <div class="header-content">
-                    <div class="logo"><a href="#"><img src="img/sedna-logo.png" alt="Sedna logo"></a></div>
-                    <div class="header-nav">
-                        <nav>
-                            <ul class="primary-nav">
-                                <li><a href="#features">About</a></li>
-                                <li><a href="#assets">Hover</a></li>
-                                <li><a href="#download">Download</a></li>
-                                <li><a href="#thank-you">Thank You</a></li>
-                            </ul>
-                            <!--<ul class="member-actions">
-                                <li><a href="#download" class="login">Log in</a></li>
-                                <li><a href="#download" class="btn-white btn-small">Sign up</a></li>
-                            </ul>-->
-                        </nav>
-                    </div>
-                    <div class="navicon">
-                        <a class="nav-toggle" href="#"><span></span></a>
-                    </div>
-                </div>
-            </header>
-        </section>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-10 col-md-offset-1">
-                    <div class="hero-content text-center">
-                        <img src="img/philter.png" alt="" />
-                        <p class="intro">Philter is a JS plugin giving you the power to control CSS filters with HTML attributes.</p>
-                        <a href="https://github.com/Specro/Philter/archive/master.zip" class="btn btn-fill btn-large btn-margin-right">Download</a> <a href="https://github.com/Specro/Philter" class="btn btn-accent btn-large">Learn more</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="down-arrow floating-arrow"><a href="#"><i class="fa fa-angle-down"></i></a></div>
-    </section>
-    <section style="min-height:760px;" class="features section-padding" id="features">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-5 col-md-offset-7">
-                    <div class="feature-list">
-                        <h3>What Philter is all about?</h3>
-                        <p>Philter provides an easy way for almost anyone to post-process their content in the web. Using Philter is as easy as writing an attribute in HTML. In fact, that's what you will be doing!
-                        </p>
-                        <pre><code class="language-html">&lt;div
-  data-philter-hue-rotate="330"
-  data-philter-contrast="125"
-  data-philter-saturate="125"
-  data-philter-brightness="60"
-  data-philter-drop-shadow="0 0 5 30"&gt;
+		<link rel="stylesheet" href="style.min.css">
+    <style>
+      [data-philter-vintage="1"] {
+        filter: url('#vintage-1');
+      }
+      [data-philter-vintage="2"] {
+        filter: url('#vintage-2');
+      }
+      [data-philter-vintage="3"] {
+        filter: url('#vintage-3');
+      }
+      [data-philter-vintage="4"] {
+        filter: url('#vintage-4');
+      }
+      [data-philter-vintage="5"] {
+        filter: url('#vintage-5');
+      }
+      [data-philter-vintage="6"] {
+        filter: url('#vintage-6');
+      }
+      [data-philter-color="black 80"] {
+        filter: url('#color-1');
+      }
+      [data-philter-hue-rotate="30"][data-philter-contrast="125"][data-philter-saturate="125"][data-philter-brightness="125"] {
+        filter: hue-rotate(30deg) contrast(125%) saturate(125%) brightness(125%);
+      }
+      [data-philter-grayscale="100 0"] {
+        filter: grayscale(100%);
+      }
+      [data-philter-grayscale="100 0"]:hover {
+        filter: grayscale(0%);
+      }
+      [data-philter-grayscale="100 0"] {
+        transition: filter 0.5s;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="bg">
+      	<div id="piece1">
+      	</div>
+        <div id="piece2">
+      	</div>
+      </div>
+  		<div class="container-fluid hero">
+  			<nav class="navbar navbar-toggleable-sm">
+  				<a href="https://specro.github.io/Philter/" class="navbar-brand"><img src="img/philter.png" class="img-fluid logo" alt="philter"></a>
+  				<ul class="navbar-nav">
+  					<li class="nav-item">
+  						<a class="nav-link" href="#about">About</a>
+  					</li>
+  					<li class="nav-item">
+  						<a class="nav-link" href="#hover">Hover</a>
+  					</li>
+  					<li class="nav-item">
+  						<a class="nav-link" href="#custom">Custom</a>
+  					</li>
+            <li class="nav-item">
+  						<a class="nav-link" href="https://github.com/Specro/Philter/releases/latest">Download</a>
+  					</li>
+  				</ul>
+  			</nav>
+  			<div class="row align-items-center justify-content-center">
+  				<div class="col-md-4">
+  					<h2 class="heading">Control CSS filters with HTML attributes</h2>
+  				</div>
+  				<div class="col-md-5">
+            <video class="img-card" src="img/philter-demo.mp4" autoplay loop>
+            </video>
+  				</div>
+  			</div>
+  		</div>
+      <div class="container-fluid section" id="about">
+        <div class="row justify-content-center">
+          <div class="col-md-5">
+  					<div class="img-card">
+              <img data-philter-hue-rotate="30" data-philter-contrast="125" data-philter-saturate="125" data-philter-brightness="125" src="https://source.unsplash.com/collection/927773/763x480" class="img-fluid" id="filterImage" alt="philter-collection">
+  					</div>
+  				</div>
+          <div class="col-md-5">
+            <h3>What Philter is all about?</h3>
+            <p>Philter provides an easy way for almost anyone to post-process their content in the web. Using Philter is as easy as writing an attribute in HTML. In fact, that's what you will be doing!</p>
+            <pre><code class="language-html">&lt;div
+    data-philter-hue-rotate="30"
+    data-philter-contrast="125"
+    data-philter-saturate="125"
+    data-philter-brightness="125"&gt;
 &lt;/div&gt;</code></pre>
-                      <p>Higher you can see the Philter attributes that are used on the image on the left. The smaller image on the right retains only the drop-shadow filter. It's that simple, scroll further to see even more goodies!</p>
-                    </div>
-                </div>
-            </div>
+            <input class="magic-checkbox" type="checkbox" id="filterEnable" checked />
+            <label for="filterEnable">Uncheck to see the difference! You know you want to.</label>
+            <p>Higher you can see the Philter attributes that are used on the image on the left. It's always a different image from <a href="https://unsplash.com/collections/927773/philter">Unsplash Philter collection</a>, so you could see how the same filter looks on different images. Try it! Refresh the page.</p>
+          </div>
         </div>
-        <div class="device-showcase">
-            <div class="devices">
-                <div data-philter-drop-shadow="0 0 5 30" data-philter-contrast="125" data-philter-saturate="125" data-philter-brightness="60" data-philter-hue-rotate="330" class="ipad-wrap wp1"></div>
-                <div data-philter-drop-shadow="0 0 5 30" class="iphone-wrap wp2"></div>
+      </div>
+      <div class="container-fluid section" id="hover">
+        <div class="row justify-content-center">
+          <div class="col-md-5">
+            <h3>Turning on hover!</h3>
+            <p>Philter also supports hover effects. Check out the image on the right and then the code a little bit lower.</p>
+  <pre><code class="language-html">&lt;div data-philter-grayscale="100 0"&gt;&lt;/div&gt;</code></pre>
+            <p>This nice effect of grayscale transition was created by Philter with one simple attribute. The first value value is applied as usual and the second on mouse hover or tap if you're on a phone.</p>
+          </div>
+          <div class="col-md-5">
+            <div class="img-card">
+              <img data-philter-grayscale="100 0" src="https://source.unsplash.com/P04mbLjShYc/763x480" class="img-fluid" alt="hover">
             </div>
+          </div>
         </div>
-        <div class="responsive-feature-img"><img src="img/devices.png" alt="responsive devices"></div>
-    </section>
-    <section class="features-extra section-padding" id="assets">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-5">
-                    <div class="feature-list">
-                        <h3>Turning on hover!</h3>
-                        <p>Philter also supports hover effects. Check out the image on the right and then the code a little bit lower.</p>
-                        <pre><code class="language-html">&lt;div
-  data-philter-grayscale="100 0"
-  data-philter-drop-shadow="0 0 3 90 0 0 10 60"&gt;
-&lt;/div&gt;</code></pre>
-                        <p>This nice effect of grayscale transition was created by Philter with one simple attribute. And some drop shadow, ofcourse.</p>
-                        <p>Since we started talking about transitions, you can control their time in seconds by passing a parameter to Philter upon initiation. Like this:</p>
-                        <pre>
-                          <code class="language-javascript">
-new Philter({transitionTime: 0.5});</code>
-                        </pre>
-                    </div>
-                </div>
+      </div>
+
+      <div class="container-fluid section" id="custom">
+        <div class="row justify-content-center">
+          <div class="col-md-5">
+            <div class="img-card remus">
+              <div class="remus-element">
+                <img src="https://images.unsplash.com/photo-1450297166380-cabe503887e5?dpr=1&auto=format&fit=crop&w=763&h=512&q=80&cs=tinysrgb&crop=&bg=" alt="before">
+              </div>
+              <div class="remus-element">
+                <img data-philter-vintage="1" src="https://images.unsplash.com/photo-1450297166380-cabe503887e5?dpr=1&auto=format&fit=crop&w=763&h=512&q=80&cs=tinysrgb&crop=&bg=" alt="after">
+              </div>
             </div>
+          </div>
+          <div class="col-md-5">
+            <h3>Introducing custom filters!</h3>
+            <p>Have you ever wanted to apply some filters but they didn't work as you expected? Have you ever wondered why there's no particular filter? Well, Philter has you covered. Check out our custom filters! There ain't much of these filters yet but further on we will be introducing more and more of them.</p>
+  <pre><code class="language-html filter-code">&lt;div data-philter-color="#235668 80"&gt;&lt;/div&gt;</code></pre>
+            <div class="filter-selection">
+              <input class="magic-radio" type="radio" name="filter" value="1" id="vintage1" checked />
+              <label for="vintage1">Vintage 1</label>
+              <input class="magic-radio" type="radio" name="filter" value="2" id="vintage2" />
+              <label for="vintage2">Vintage 2</label>
+              <input class="magic-radio" type="radio" name="filter" value="3" id="vintage3" />
+              <label for="vintage3">Vintage 3</label>
+              <input class="magic-radio" type="radio" name="filter" value="4" id="vintage4" />
+              <label for="vintage4">Vintage 4</label>
+              <input class="magic-radio" type="radio" name="filter" value="5" id="vintage5" />
+              <label for="vintage5">Vintage 5</label>
+              <input class="magic-radio" type="radio" name="filter" value="6" id="vintage6" />
+              <label for="vintage6">Vintage 6</label>
+            </div>
+          </div>
         </div>
-        <div data-philter-grayscale="100 0" data-philter-drop-shadow="0 0 3 90 0 0 10 60" class="macbook-wrap wp3"></div>
-        <div class="responsive-feature-img"><img src="img/by-greg-rakozy.png" alt="responsive devices"></div>
-    </section>
-    <section style="min-height:840px;" class="features section-padding" id="filters">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-5 col-md-offset-7 filter-desc">
-                    <div class="feature-list">
-                        <h3>Introducing custom filters!</h3>
-                        <p>Have you ever wanted to apply some filters but they didn't work as you expected? Have you ever wondered why there's no particular filter? Well, Philter has you covered. Check out our custom filters! There ain't much of these filters yet but further on we will be introducing more and more of them.</p>
-                        <pre><code class="language-html filter-code">&lt;div data-philter-color="#235668 80"&gt;&lt;/div&gt;</code></pre>
-                        <div class="row">
-                          <div class="col-md-6">
-                            <div class="filter-selection">
-                              <input type="radio" name="filter" value="color" checked /> Color<br>
-                            </div>
-                          </div>
-                          <div class="col-md-6">
-                            <div class="filter-selection">
-                              <input type="radio" name="filter" value="vintage-1" /> Vintage 1<br>
-                              <input type="radio" name="filter" value="vintage-2" /> Vintage 2<br>
-                              <input type="radio" name="filter" value="vintage-3" /> Vintage 3<br>
-                              <input type="radio" name="filter" value="vintage-4" /> Vintage 4<br>
-                              <input type="radio" name="filter" value="vintage-5" /> Vintage 5<br>
-                              <input type="radio" name="filter" value="vintage-6" /> Vintage 6
-                            </div>
-                          </div>
-                        </div>
-                    </div>
-                </div>
+      </div>
+
+      <footer class="section">
+        <div class="container-fluid">
+          <div class="row justify-content-center">
+            <div class="col-md-6">
+              <ul class="nav justify-content-md-start justify-content-center mb-5">
+                <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                <li class="nav-item"><a class="nav-link" href="#hover">Hover</a></li>
+                <li class="nav-item"><a class="nav-link" href="#custom">Custom</a></li>
+                <li class="nav-item"><a class="nav-link" href="https://github.com/Specro/Philter/releases/latest">Download</a></li>
+              </ul>
             </div>
+            <div class="col-md-4 text-center">
+              <a href="https://github.com/specro/philter"><img src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTYuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgd2lkdGg9IjY0cHgiIGhlaWdodD0iNjRweCIgdmlld0JveD0iMCAwIDM1LjMxOCAzNS4zMTgiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDM1LjMxOCAzNS4zMTg7IiB4bWw6c3BhY2U9InByZXNlcnZlIj4KPGc+Cgk8cGF0aCBkPSJNMjMuNzEsMzQuNjg5Yy0wLjE3MiwwLjA2Mi0wLjM0NSwwLjEzNy0wLjUyMiwwLjE2OGMtMC42NzgsMC4xMjEtMS4xMTItMC4yMjktMS4xMTYtMC45MjIgICBjLTAuMDA5LTEuMjg3LTAuMDA5LTIuNTcyLDAuMDEyLTMuODU5YzAuMDIyLTEuNDgtMC4wMTItMi45NDEtMS4xMzktNC4xNjJjMC42Ny0wLjEyLDEuMjY2LTAuMjA0LDEuODQ5LTAuMzM4ICAgYzMuODYyLTAuODg3LDUuODY4LTMuMzIzLDYuMTI0LTcuMzY2YzAuMTMxLTIuMDU4LTAuMjM2LTMuOTQ2LTEuNjA0LTUuNTY3Yy0wLjA5OS0wLjExNC0wLjEwNC0wLjM3My0wLjA1Ny0wLjUzOSAgIGMwLjM2NC0xLjM0LDAuMjU4LTIuNjQ5LTAuMTY2LTMuOTU5Yy0wLjEwNS0wLjMyNy0wLjI3OS0wLjQyOC0wLjYwMi0wLjQwN2MtMS4xMzQsMC4wNjMtMi4xNzMsMC40NjEtMy4wODksMS4wNzMgICBjLTAuODgzLDAuNTkzLTEuNzA1LDAuNzIyLTIuNzU0LDAuNDgyYy0yLjMxLTAuNTIxLTQuNjM1LTAuMzY5LTYuOTQsMC4xNjVjLTAuMjYxLDAuMDYyLTAuNjEyLTAuMDIxLTAuODUxLTAuMTYxICAgYy0xLjA4Mi0wLjYzNC0yLjE2NC0xLjI1LTMuNDEyLTEuNDk2Yy0wLjk2NS0wLjE4OC0xLjA0OS0wLjE0LTEuMzA1LDAuNzkzQzcuODE2LDkuNzcsNy43ODQsMTAuOTQ3LDguMTEzLDEyLjEzICAgYzAuMDQ3LDAuMTcyLTAuMDAyLDAuNDQ4LTAuMTE3LDAuNTc1Yy0yLjU1NywyLjg1My0xLjYzMSw4LjI0NCwwLjA5MiwxMC4zMDljMS4zNCwxLjYwNCwzLjEyLDIuMzI2LDUuMDk2LDIuNzAxICAgYzAuMzQ1LDAuMDY0LDAuNjg4LDAuMTEzLDEuMDMzLDAuMTczYy0wLjI5NiwwLjc3LTAuNTYyLDEuNDk3LTAuODYzLDIuMjEyYy0wLjA1OSwwLjEzOC0wLjI0NiwwLjI1NC0wLjM5OSwwLjMxMiAgIGMtMS45MzgsMC43NTItMy42MDQsMC4xOTktNC43MTMtMS41NmMtMC41OTMtMC45MzgtMS4zNTQtMS42MzktMi40ODgtMS44NDJjLTAuMDM2LTAuMDA3LTAuMDczLTAuMDI2LTAuMTA2LTAuMDIxICAgYy0wLjMwNSwwLjA4LTAuNjA3LDAuMTY0LTAuOTExLDAuMjQ2YzAuMTcxLDAuMjM4LDAuMjkyLDAuNTU4LDAuNTIxLDAuNzAxYzAuOTYxLDAuNjA4LDEuNTg2LDEuNDc1LDEuOTk5LDIuNDk4ICAgYzAuNjQ5LDEuNjA0LDEuOTA5LDIuMzE5LDMuNTQ2LDIuNDU5YzAuNzk5LDAuMDY1LDEuNjA2LDAuMDEsMi40ODEsMC4wMWMwLDAuOTk2LDAuMDM2LDIuMTMzLTAuMDE1LDMuMjY1ICAgYy0wLjAyNiwwLjYxLTAuNjM5LDAuODU0LTEuMzczLDAuNjA0Yy0xLjk0Ny0wLjY2Ni0zLjc1Mi0xLjYyMS01LjMxMS0yLjk2M0MwLjk1NiwyNi45Ni0xLjIxNCwyMC44MywwLjY1NywxMy42NTUgICBDMi41MjIsNi41MDMsNy4zODMsMi4xMTYsMTQuNjUxLDAuNzM5QzI0LjcwOC0xLjE2MywzNC4yMzUsNi4xNjEsMzUuMjMzLDE2LjM3QzM2LjAyMSwyNC40MTgsMzEuMjg0LDMxLjk0OSwyMy43MSwzNC42ODl6ICAgIE0xNC4yMjksMjUuODVjLTAuMDA2LDAuMDE0LTAuMDEsMC4wMjQtMC4wMTYsMC4wMzhjMC4wMTgsMC4wMDMsMC4wMzYsMC4wMDYsMC4wNTUsMC4wMDkgICBDMTQuMjgyLDI1Ljg5OCwxNC4yOTQsMjUuOTIzLDE0LjIyOSwyNS44NXogTTkuNjc5LDI5LjAzMWMwLjE1NywwLjA5NywwLjMwNywwLjIyLDAuNDc3LDAuMjczYzAuMDYyLDAuMDIsMC4xNzctMC4xMjEsMC4zOC0wLjI3MSAgIGMtMC4yODItMC4xMDctMC40NDgtMC4yMDEtMC42MjMtMC4yMjVDOS44NDUsMjguOCw5Ljc1NywyOC45NTMsOS42NzksMjkuMDMxeiBNMTEuMTEyLDI5LjI3N2MwLjAyMywwLjEwNSwwLjIzMiwwLjIzNiwwLjM1NSwwLjIzNCAgIGMwLjExOS0wLjAwMiwwLjIzNS0wLjE2LDAuMzU0LTAuMjVjLTAuMTA4LTAuMDk5LTAuMjE2LTAuMTk1LTAuNTQ4LTAuNDk0QzExLjIwMSwyOC45NzUsMTEuMDgyLDI5LjE0MywxMS4xMTIsMjkuMjc3eiAgICBNMTIuODcsMjguODU0Yy0wLjE0OCwwLjAzNS0wLjI3MywwLjE3Mi0wLjQwOCwwLjI2NmMwLjA3OSwwLjEsMC4xNTgsMC4xOTMsMC4yODUsMC4zNWMwLjE3NS0wLjE2LDAuMjk0LTAuMjcxLDAuNDE0LTAuMzc5ICAgQzEzLjA2MSwyOS4wMDQsMTIuOTQ0LDI4LjgzNiwxMi44NywyOC44NTR6IE04LjUxMiwyOC4yNjFjMC4wODIsMC4xNTUsMC4yMDksMC4yODksMC4zODEsMC41MDggICBjMC4xMTUtMC4xODgsMC4yNC0wLjMzMiwwLjIxOC0wLjM2MWMtMC4xMDktMC4xNDMtMC4yNTctMC4yNi0wLjQwMy0wLjM2N0M4LjY5OCwyOC4wMzMsOC40OTUsMjguMjI3LDguNTEyLDI4LjI2MXoiIGZpbGw9IiNGRkZGRkYiLz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8L3N2Zz4K" alt="github" /></a>
+            </div>
+          </div>
         </div>
-        <div class="filter-showcase">
-            <div class="filters color twentytwenty-container">
-                <img src="img/by-alex-wong.jpg" alt="" />
-                <img src="img/by-alex-wong.jpg" data-philter-color="#235668 80" alt="" />
-            </div>
-            <div class="filters vintage-1 twentytwenty-container">
-                <img src="img/by-alex-wong.jpg" alt="" />
-                <img src="img/by-alex-wong.jpg" data-philter-vintage="1" alt="" />
-            </div>
-            <div class="filters vintage-2 twentytwenty-container">
-                <img src="img/by-alex-wong.jpg" alt="" />
-                <img src="img/by-alex-wong.jpg" data-philter-vintage="2" alt="" />
-            </div>
-            <div class="filters vintage-3 twentytwenty-container">
-                <img src="img/by-alex-wong.jpg" alt="" />
-                <img src="img/by-alex-wong.jpg" data-philter-vintage="3" alt="" />
-            </div>
-            <div class="filters vintage-4 twentytwenty-container">
-                <img src="img/by-alex-wong.jpg" alt="" />
-                <img src="img/by-alex-wong.jpg" data-philter-vintage="4" alt="" />
-            </div>
-            <div class="filters vintage-5 twentytwenty-container">
-                <img src="img/by-alex-wong.jpg" alt="" />
-                <img src="img/by-alex-wong.jpg" data-philter-vintage="5" alt="" />
-            </div>
-            <div class="filters vintage-6 twentytwenty-container">
-                <img src="img/by-alex-wong.jpg" alt="" />
-                <img src="img/by-alex-wong.jpg" data-philter-vintage="6" alt="" />
-            </div>
-        </div>
-    </section>
-    <section class="hero-strip section-padding" id="download">
-        <div class="container">
-            <div class="col-md-12 text-center">
-                <h2>
-                Download and support Philter!
-                </h2>
-                <p>You can visit Philter on GitHub and download or contribute to the development right now.</p>
-                <a href="https://github.com/Specro/Philter/" class="btn btn-ghost btn-accent btn-large">Visit Philter on GitHub</a>
-                <div class="logo-placeholder floating-logo"><img src="img/philter.png" alt="Philter Logo"></div>
-            </div>
-        </div>
-    </section>
-    <section class="sign-up section-padding text-center" id="thank-you">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6 col-md-offset-3">
-                    <h3>Thank you!</h3>
-                    <p>All this wouldn't be possible without these people!</p>
-                      <h5>Elephento</h5>
-                      <h5>Reddit</h5>
-                      <h5>Peter Finlan</h5>
-                      <h5>RoundedHexagon</h5>
-                      <h5>Anthony Delanoix</h5>
-                      <h5>Greg Rakozy</h5>
-                      <h5>Alex Wong</h5>
-                      <h5>Maelle Keita</h5>
-                      <p>Also a shout-out to people at VU. You the best!</p>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section class="to-top">
-        <div class="container">
-            <div class="row">
-                <div class="to-top-wrap">
-                    <a href="#top" class="top"><i class="fa fa-angle-up"></i></a>
-                </div>
-            </div>
-        </div>
-    </section>
-    <footer>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-7">
-                    <div class="footer-links">
-                        <ul class="footer-group">
-                            <li><a href="#features">About</a></li>
-                            <li><a href="https://github.com/Specro/Philter/blob/master/LICENSE">License</a></li>
-                            <li><a href="http://elephento.lt/">Elephento</a></li>
-                        </ul>
-                        <p>Copyright © 2015 <a href="">Philter</a><br>
-                    </div>
-                </div>
-                <div class="social-share">
-                    <p>Visit Philter on GitHub</p>
-                    <a href="https://github.com/Specro/Philter/" class="twitter-share"><i class="fa fa-github"></i></a>
-                </div>
-            </div>
-        </div>
-    </footer>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
-    <script src="bower_components/retina.js/dist/retina.js"></script>
-    <script src="js/jquery.fancybox.pack.js"></script>
-    <script src="js/vendor/bootstrap.min.js"></script>
-    <script src="js/philter/philter.min.js"></script>
-    <script src="js/jquery.flexslider-min.js"></script>
-    <script src="bower_components/classie/classie.js"></script>
-    <script src="bower_components/jquery-waypoints/lib/jquery.waypoints.min.js"></script>
-    <script src="bower_components/prism/prism.js"></script>
-    <script src="bower_components/twentytwenty/js/jquery.event.move.js"></script>
-    <script src="bower_components/twentytwenty/js/jquery.twentytwenty.js"></script>
-    <script src="js/scripts.js"></script>
-    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+      </footer>
+      <div class="text-center">
+        <p>Copyright &copy; 2017 Philter</p>
+      </div>
+    </div>
+
+    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="0" height="0" id="philter-svg"><defs>
+      <filter id="vintage-1" primitiveUnits="objectBoundingBox"><feColorMatrix type="matrix" values="0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0" result="grayscale" /><feComponentTransfer x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB" result="gradientMap"><feFuncR type="table" tableValues="0.0352941176470588 0.2745098039215686"/><feFuncG type="table" tableValues="0.396078431372549 0.0666666666666667"/><feFuncB type="table" tableValues="0.6431372549019608 0.0509803921568627"/><feFuncA type="table" tableValues="1 1"/></feComponentTransfer><feBlend in="gradientMap" in2="SourceGraphic" mode="soft-light" result="softLight" /><feComponentTransfer x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB" result="curves"><feFuncR type="table" tableValues="0 0.2862745098039216 0.7137254901960784 1"/><feFuncG type="table" tableValues="0 0.2862745098039216 0.7137254901960784 1"/><feFuncB type="table" tableValues="0 0.2862745098039216 0.7137254901960784 1"/><feFuncA type="table" tableValues="1 1"/></feComponentTransfer><feComponentTransfer x="0" y="0" width="100%" height="100%" color-interpolation-filters="linearRGB" result="exposure"><feFuncR type="gamma" amplitude="1" exponent="1" offset="0.02" /><feFuncG type="gamma" amplitude="1" exponent="1" offset="0.02" /><feFuncB type="gamma" amplitude="1" exponent="1" offset="0.02" /><feFuncA type="gamma" amplitude="1" exponent="1" offset="0" /></feComponentTransfer></filter>
+      <filter id="vintage-2" primitiveUnits="objectBoundingBox"><feColorMatrix type="matrix" values="0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0" result="grayscale" /><feComponentTransfer x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB" result="gradientMap"><feFuncR type="table" tableValues="0.2901960784313725 0.7294117647058824"/><feFuncG type="table" tableValues="0.3490196078431373 0.5098039215686275"/><feFuncB type="table" tableValues="0.3725490196078431 0.3294117647058824"/><feFuncA type="table" tableValues="1 1"/></feComponentTransfer><feBlend in="gradientMap" in2="SourceGraphic" mode="overlay" result="overlay" /><feComponentTransfer x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB" result="curves"><feFuncR type="table" tableValues="0.203921568627451 0.2784313725490196 0.5568627450980392 0.8588235294117647 1"/><feFuncG type="table" tableValues="0.196078431372549 0.3529411764705882 0.7568627450980392 1"/><feFuncB type="table" tableValues="0.2235294117647059 0.2745098039215686 0.3254901960784314 0.4274509803921569 0.5647058823529412 0.7529411764705882 1 1 1"/><feFuncA type="table" tableValues="1 1"/></feComponentTransfer><feColorMatrix type="saturate" values="0.65" result="desaturate" /><feComponentTransfer x="0" y="0" width="100%" height="100%" color-interpolation-filters="linearRGB" result="exposure"><feFuncR type="gamma" amplitude="1" exponent="1" offset="0.02" /><feFuncG type="gamma" amplitude="1" exponent="1" offset="0.02" /><feFuncB type="gamma" amplitude="1" exponent="1" offset="0.02" /><feFuncA type="gamma" amplitude="1" exponent="1" offset="0" /></feComponentTransfer></filter>
+      <filter id="vintage-3" primitiveUnits="objectBoundingBox"><feComponentTransfer x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB" result="curves"><feFuncR type="table" tableValues="0.196078431372549 0.2196078431372549 0.4352941176470588 0.7843137254901961 1"/><feFuncG type="table" tableValues="0 0.3588235294117647 0.6137254901960784 0.9 1"/><feFuncB type="table" tableValues="0.3196078431372549 0.4333333333333333 0.5156862745098039 0.5980392156862745 0.6882352941176471 0.7745098039215686 0.8529411764705882 0.9823529411764706 1"/><feFuncA type="table" tableValues="1 1"/></feComponentTransfer><feColorMatrix type="saturate" values="0.95" result="desaturate" /><feComponentTransfer x="0" y="0" width="100%" height="100%" color-interpolation-filters="linearRGB" result="exposure"><feFuncR type="gamma" amplitude="1" exponent="1" offset="0.03" /><feFuncG type="gamma" amplitude="1" exponent="1" offset="0.03" /><feFuncB type="gamma" amplitude="1" exponent="1" offset="0.03" /><feFuncA type="gamma" amplitude="1" exponent="1" offset="0" /></feComponentTransfer></filter>
+      <filter id="vintage-4" primitiveUnits="objectBoundingBox"><feColorMatrix type="matrix" values="0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0" result="grayscale" /><feComponentTransfer x="0" y="0" width="100%" height="100%" result="opacity"><feFuncA type="linear" slope="0.5" /></feComponentTransfer><feBlend in="opacity" in2="SourceGraphic" mode="soft-light" result="softLight" /><feComponentTransfer x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB" result="curves"><feFuncR type="table" tableValues="0.1607843137254902 0.4509803921568627 1"/><feFuncG type="table" tableValues="0.2529411764705882 0.3352941176470588 0.6294117647058824 0.9627450980392157 1"/><feFuncB type="table" tableValues="0 0.3862745098039216 0.5784313725490196 0.9784313725490196 1"/><feFuncA type="table" tableValues="1 1"/></feComponentTransfer><feColorMatrix type="saturate" values="0.9" result="desaturate" /><feComponentTransfer x="0" y="0" width="100%" height="100%" color-interpolation-filters="linearRGB" result="exposure"><feFuncR type="gamma" amplitude="1" exponent="1" offset="0.02" /><feFuncG type="gamma" amplitude="1" exponent="1" offset="0.02" /><feFuncB type="gamma" amplitude="1" exponent="1" offset="0.02" /><feFuncA type="gamma" amplitude="1" exponent="1" offset="0" /></feComponentTransfer></filter>
+      <filter id="vintage-5" primitiveUnits="objectBoundingBox"><feComponentTransfer x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB" result="levels"><feFuncR type="table" tableValues="0.1137254901960784 0.8745098039215686"/><feFuncG type="table" tableValues="0.1137254901960784 0.8745098039215686"/><feFuncB type="table" tableValues="0.1137254901960784 0.8745098039215686"/></feComponentTransfer><feBlend in="levels" in2="SourceGraphic" mode="screen" result="screen" /><feComponentTransfer x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB" result="curves"><feFuncR type="table" tableValues="0 0 0 0 0.3607843137254902 0.6313725490196078 0.7568627450980392 0.8980392156862745 1"/><feFuncG type="table" tableValues="0 0.2431372549019608 1"/><feFuncB type="table" tableValues="0.1803921568627451 0.392156862745098 0.5490196078431373 0.8431372549019608"/></feComponentTransfer><feComponentTransfer x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB" result="levels2"><feFuncR type="table" tableValues="0.0862745098039216 0.8588235294117647"/><feFuncG type="table" tableValues="0.0862745098039216 0.8588235294117647"/><feFuncB type="table" tableValues="0.0862745098039216 0.8588235294117647"/></feComponentTransfer></filter>
+      <filter id="vintage-6" primitiveUnits="objectBoundingBox"><feColorMatrix type="matrix" values="0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0" result="grayscale" /><feComponentTransfer x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB" result="levels"><feFuncR type="table" tableValues="0.192156862745098 0.35 1"/><feFuncG type="table" tableValues="0.192156862745098 0.35 1"/><feFuncB type="table" tableValues="0.192156862745098 0.35 1"/></feComponentTransfer><feComponentTransfer x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB" result="curves"><feFuncR type="table" tableValues="0.1882352941176471 0.2274509803921569 0.2705882352941176 0.3254901960784314 0.392156862745098 0.4941176470588235 0.5843137254901961 0.7176470588235294 0.8509803921568627"/><feFuncG type="table" tableValues="0 0.192156862745098 0.396078431372549 0.6392156862745098 0.8980392156862745"/><feFuncB type="table" tableValues="0.1411764705882353 0.3803921568627451 0.9176470588235294"/></feComponentTransfer><feConvolveMatrix order="3 3" preserveAlpha="true" kernelMatrix="1 -1 1 -1 -1 -1 1 -1 1" result="sharpen" /><feComponentTransfer x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB" result="opacity"><feFuncA type="linear" slope="0.2"/></feComponentTransfer><feBlend in="opacity" in2="curves" /></filter>
+    </defs></svg>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
     <script>
-    (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
-    function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
-    e=o.createElement(i);r=o.getElementsByTagName(i)[0];
-    e.src='//www.google-analytics.com/analytics.js';
-    r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-    ga('create','UA-69557100-1','auto');ga('send','pageview');
+      WebFont.load({
+        google: {
+          families: ['Source Sans Pro:400,900']
+        }
+      });
     </script>
-</body>
+    <script src="bundle.min.js"></script>
+  </body>
 </html>
