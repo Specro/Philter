@@ -11,7 +11,7 @@ function list(val) {
 }
 
 program
-.version('1.2.0')
+.version('1.4.1')
 .usage('[options] <file ...>')
 .option('-n, --no-tag', 'No "philter" in data attributes')
 .option('-s, --svg <dir>', 'SVG directory or svg/html file to append to')
@@ -45,7 +45,7 @@ function saveData(dir, data, type, cb) {
         if (err) {
           throw err
         }
-        let $ = cheerio.load(file)
+        let $ = cheerio.load(file, {recognizeSelfClosing: true})
         if (type === 'svg') {
           if ($('body').find('#philter-svg').length) {
             $('#philter-svg').replaceWith(data)

@@ -30,7 +30,7 @@
     "bluebird": "^3.4.6",
     "cheerio": "^0.22.0",
     "commander": "^2.9.0",
-    "fs-extra": "^1.0.0",
+    "fs-extra": "^3.0.0",
     "is-html": "^1.0.0",
     "lodash": "^4.16.2"
   },

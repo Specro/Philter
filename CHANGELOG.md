@@ -1,6 +1,14 @@
 # Change Log
 ## [Unreleased]
 
+## [1.4.1] - 2017-07-05
+### Added
+- Experimental anaglyph filter
+
+### Fixed
+- Custom filter directory not recognizing relative paths
+- CLI nesting self closing tags when injecting SVG into HTML
+
 ## [1.4.0] - 2016-11-08
 ### Added
 - Custom filters
