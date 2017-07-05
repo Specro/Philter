@@ -1,6 +1,6 @@
 {
   "name": "philter",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "Philter is a JS plugin giving you the power to control CSS filters with HTML data attributes.",
   "main": "lib/index.js",
   "keywords": [
