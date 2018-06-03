@@ -4,13 +4,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
-    <link rel="icon" type="image/png" href="img/favicon-32x32.png" sizes="32x32" />
-    <link rel="icon" type="image/png" href="img/favicon-16x16.png" sizes="16x16" />
+    <link rel="icon" type="image/png" href="img/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="img/favicon-16x16.png" sizes="16x16">
     <title>Philter - Control CSS filters with HTML attributes</title>
     <meta name="description" content="Philter is a JS plugin giving you the power to control CSS filters with HTML attributes">
 
 		<link rel="stylesheet" href="style.min.css">
-    <style>
+    <style id="philter-css">
       [data-philter-vintage="1"] {
         filter: url('#vintage-1');
       }
@@ -29,9 +29,6 @@
       [data-philter-vintage="6"] {
         filter: url('#vintage-6');
       }
-      [data-philter-color="black 80"] {
-        filter: url('#color-1');
-      }
       [data-philter-hue-rotate="30"][data-philter-contrast="125"][data-philter-saturate="125"][data-philter-brightness="125"] {
         filter: hue-rotate(30deg) contrast(125%) saturate(125%) brightness(125%);
       }
@@ -41,11 +38,13 @@
       [data-philter-grayscale="100 0"]:hover {
         filter: grayscale(0%);
       }
+      [data-philter-duotone="#7028e4 #e5b2ca"] {
+        filter: url('#duotone-1');
+      }
       [data-philter-grayscale="100 0"] {
         transition: filter 0.5s;
       }
     </style>
-  </head>
   <body>
     <div class="wrapper">
       <div class="bg">
@@ -70,6 +69,9 @@
             <li class="nav-item">
   						<a class="nav-link" href="https://github.com/Specro/Philter/releases/latest">Download</a>
   					</li>
+            <li class="nav-item">
+  						<a class="nav-link" href="https://github.com/Specro/Philter/experimental">Experimental</a>
+  					</li>
   				</ul>
   			</nav>
   			<div class="row align-items-center justify-content-center">
@@ -77,8 +79,8 @@
   					<h2 class="heading">Control CSS filters with HTML attributes</h2>
   				</div>
   				<div class="col-md-5">
-            <video class="img-card" src="img/philter-demo.mp4" autoplay loop>
-            </video>
+            <p data-height="555" data-theme-id="33661" data-slug-hash="Nzxqwx" data-default-tab="result" data-user="specroo" data-embed-version="2" data-pen-title="Philter demo" class="codepen">See the Pen <a href="https://codepen.io/specroo/pen/Nzxqwx/">Philter demo</a> on <a href="https://codepen.io">CodePen</a>.</p>
+            <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
   				</div>
   			</div>
   		</div>
@@ -91,16 +93,16 @@
   				</div>
           <div class="col-md-5">
             <h3>What Philter is all about?</h3>
-            <p>Philter provides an easy way for almost anyone to post-process their content in the web. Using Philter is as easy as writing an attribute in HTML. In fact, that's what you will be doing!</p>
+            <p>Philter provides an easy way for almost anyone to post-process their content in the web. Using Philter is as easy as writing an attribute in HTML. In fact, that&apos;s what you will be doing!</p>
             <pre><code class="language-html">&lt;div
-    data-philter-hue-rotate="30"
-    data-philter-contrast="125"
-    data-philter-saturate="125"
-    data-philter-brightness="125"&gt;
+    data-philter-hue-rotate=&quot;30&quot;
+    data-philter-contrast=&quot;125&quot;
+    data-philter-saturate=&quot;125&quot;
+    data-philter-brightness=&quot;125&quot;&gt;
 &lt;/div&gt;</code></pre>
-            <input class="magic-checkbox" type="checkbox" id="filterEnable" checked />
+            <input class="magic-checkbox" type="checkbox" id="filterEnable" checked>
             <label for="filterEnable">Uncheck to see the difference! You know you want to.</label>
-            <p>Higher you can see the Philter attributes that are used on the image on the left. It's always a different image from <a href="https://unsplash.com/collections/927773/philter">Unsplash Philter collection</a>, so you could see how the same filter looks on different images. Try it! Refresh the page.</p>
+            <p>Higher you can see the Philter attributes that are used on the image on the left. It&apos;s always a different image from <a href="https://unsplash.com/collections/927773/philter">Unsplash Philter collection</a>, so you could see how the same filter looks on different images. Try it! Refresh the page.</p>
           </div>
         </div>
       </div>
@@ -109,8 +111,8 @@
           <div class="col-md-5">
             <h3>Turning on hover!</h3>
             <p>Philter also supports hover effects. Check out the image on the right and then the code a little bit lower.</p>
-  <pre><code class="language-html">&lt;div data-philter-grayscale="100 0"&gt;&lt;/div&gt;</code></pre>
-            <p>This nice effect of grayscale transition was created by Philter with one simple attribute. The first value value is applied as usual and the second on mouse hover or tap if you're on a phone.</p>
+  <pre><code class="language-html">&lt;div data-philter-grayscale=&quot;100 0&quot;&gt;&lt;/div&gt;</code></pre>
+            <p>This nice effect of grayscale transition was created by Philter with one simple attribute. The first value value is applied as usual and the second on mouse hover or tap if you&apos;re on a phone.</p>
           </div>
           <div class="col-md-5">
             <div class="img-card">
@@ -125,30 +127,45 @@
           <div class="col-md-5">
             <div class="img-card remus">
               <div class="remus-element">
-                <img src="https://images.unsplash.com/photo-1450297166380-cabe503887e5?dpr=1&auto=format&fit=crop&w=763&h=512&q=80&cs=tinysrgb&crop=&bg=" alt="before">
+                <img src="https://images.unsplash.com/photo-1450297166380-cabe503887e5?dpr=1&amp;auto=format&amp;fit=crop&amp;w=763&amp;h=512&amp;q=80&amp;cs=tinysrgb&amp;crop=&amp;bg=" alt="before">
               </div>
               <div class="remus-element">
-                <img data-philter-vintage="1" src="https://images.unsplash.com/photo-1450297166380-cabe503887e5?dpr=1&auto=format&fit=crop&w=763&h=512&q=80&cs=tinysrgb&crop=&bg=" alt="after">
+                <img data-philter-vintage="1" src="https://images.unsplash.com/photo-1450297166380-cabe503887e5?dpr=1&amp;auto=format&amp;fit=crop&amp;w=763&amp;h=512&amp;q=80&amp;cs=tinysrgb&amp;crop=&amp;bg=" alt="after">
               </div>
             </div>
           </div>
           <div class="col-md-5">
             <h3>Introducing custom filters!</h3>
-            <p>Have you ever wanted to apply some filters but they didn't work as you expected? Have you ever wondered why there's no particular filter? Well, Philter has you covered. Check out our custom filters! There ain't much of these filters yet but further on we will be introducing more and more of them.</p>
-  <pre><code class="language-html filter-code">&lt;div data-philter-color="#235668 80"&gt;&lt;/div&gt;</code></pre>
+            <p>Have you ever wanted to apply some filters but they didn&apos;t work as you expected? Have you ever wondered why there&apos;s no particular filter? Well, Philter has you covered. Check out our custom filters! There ain&apos;t much of these filters yet but further on we will be introducing more and more of them.</p>
+  <pre><code class="language-html filter-code">&lt;div data-philter-color=&quot;#235668 80&quot;&gt;&lt;/div&gt;</code></pre>
             <div class="filter-selection">
-              <input class="magic-radio" type="radio" name="filter" value="1" id="vintage1" checked />
+              <input class="magic-radio" type="radio" name="filter" value="1" id="vintage1" checked>
               <label for="vintage1">Vintage 1</label>
-              <input class="magic-radio" type="radio" name="filter" value="2" id="vintage2" />
+              <input class="magic-radio" type="radio" name="filter" value="2" id="vintage2">
               <label for="vintage2">Vintage 2</label>
-              <input class="magic-radio" type="radio" name="filter" value="3" id="vintage3" />
+              <input class="magic-radio" type="radio" name="filter" value="3" id="vintage3">
               <label for="vintage3">Vintage 3</label>
-              <input class="magic-radio" type="radio" name="filter" value="4" id="vintage4" />
+              <input class="magic-radio" type="radio" name="filter" value="4" id="vintage4">
               <label for="vintage4">Vintage 4</label>
-              <input class="magic-radio" type="radio" name="filter" value="5" id="vintage5" />
+              <input class="magic-radio" type="radio" name="filter" value="5" id="vintage5">
               <label for="vintage5">Vintage 5</label>
-              <input class="magic-radio" type="radio" name="filter" value="6" id="vintage6" />
+              <input class="magic-radio" type="radio" name="filter" value="6" id="vintage6">
               <label for="vintage6">Vintage 6</label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container-fluid section" id="hover">
+        <div class="row justify-content-center">
+          <div class="col-md-5">
+            <h3>Going duotone!</h3>
+            <p>The duotone color effect that Spotify brought back not so long ago incorporates 2 colors that are mapped to shadows and highlights of the image. Duotone gives images vibrancy and stands out in a design. The same effect is used in a CodePen example higher in this page ;)</p>
+  <pre><code class="language-html">&lt;div data-philter-duotone=&quot;#7028e4 #e5b2ca&quot;&gt;&lt;/div&gt;</code></pre>
+          </div>
+          <div class="col-md-5">
+            <div class="img-card">
+              <img data-philter-duotone="#7028e4 #e5b2ca" src="https://source.unsplash.com/9417pueOkiE/763x480" class="img-fluid" alt="hover">
             </div>
           </div>
         </div>
@@ -166,24 +183,17 @@
               </ul>
             </div>
             <div class="col-md-4 text-center">
-              <a href="https://github.com/specro/philter"><img src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTYuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgd2lkdGg9IjY0cHgiIGhlaWdodD0iNjRweCIgdmlld0JveD0iMCAwIDM1LjMxOCAzNS4zMTgiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDM1LjMxOCAzNS4zMTg7IiB4bWw6c3BhY2U9InByZXNlcnZlIj4KPGc+Cgk8cGF0aCBkPSJNMjMuNzEsMzQuNjg5Yy0wLjE3MiwwLjA2Mi0wLjM0NSwwLjEzNy0wLjUyMiwwLjE2OGMtMC42NzgsMC4xMjEtMS4xMTItMC4yMjktMS4xMTYtMC45MjIgICBjLTAuMDA5LTEuMjg3LTAuMDA5LTIuNTcyLDAuMDEyLTMuODU5YzAuMDIyLTEuNDgtMC4wMTItMi45NDEtMS4xMzktNC4xNjJjMC42Ny0wLjEyLDEuMjY2LTAuMjA0LDEuODQ5LTAuMzM4ICAgYzMuODYyLTAuODg3LDUuODY4LTMuMzIzLDYuMTI0LTcuMzY2YzAuMTMxLTIuMDU4LTAuMjM2LTMuOTQ2LTEuNjA0LTUuNTY3Yy0wLjA5OS0wLjExNC0wLjEwNC0wLjM3My0wLjA1Ny0wLjUzOSAgIGMwLjM2NC0xLjM0LDAuMjU4LTIuNjQ5LTAuMTY2LTMuOTU5Yy0wLjEwNS0wLjMyNy0wLjI3OS0wLjQyOC0wLjYwMi0wLjQwN2MtMS4xMzQsMC4wNjMtMi4xNzMsMC40NjEtMy4wODksMS4wNzMgICBjLTAuODgzLDAuNTkzLTEuNzA1LDAuNzIyLTIuNzU0LDAuNDgyYy0yLjMxLTAuNTIxLTQuNjM1LTAuMzY5LTYuOTQsMC4xNjVjLTAuMjYxLDAuMDYyLTAuNjEyLTAuMDIxLTAuODUxLTAuMTYxICAgYy0xLjA4Mi0wLjYzNC0yLjE2NC0xLjI1LTMuNDEyLTEuNDk2Yy0wLjk2NS0wLjE4OC0xLjA0OS0wLjE0LTEuMzA1LDAuNzkzQzcuODE2LDkuNzcsNy43ODQsMTAuOTQ3LDguMTEzLDEyLjEzICAgYzAuMDQ3LDAuMTcyLTAuMDAyLDAuNDQ4LTAuMTE3LDAuNTc1Yy0yLjU1NywyLjg1My0xLjYzMSw4LjI0NCwwLjA5MiwxMC4zMDljMS4zNCwxLjYwNCwzLjEyLDIuMzI2LDUuMDk2LDIuNzAxICAgYzAuMzQ1LDAuMDY0LDAuNjg4LDAuMTEzLDEuMDMzLDAuMTczYy0wLjI5NiwwLjc3LTAuNTYyLDEuNDk3LTAuODYzLDIuMjEyYy0wLjA1OSwwLjEzOC0wLjI0NiwwLjI1NC0wLjM5OSwwLjMxMiAgIGMtMS45MzgsMC43NTItMy42MDQsMC4xOTktNC43MTMtMS41NmMtMC41OTMtMC45MzgtMS4zNTQtMS42MzktMi40ODgtMS44NDJjLTAuMDM2LTAuMDA3LTAuMDczLTAuMDI2LTAuMTA2LTAuMDIxICAgYy0wLjMwNSwwLjA4LTAuNjA3LDAuMTY0LTAuOTExLDAuMjQ2YzAuMTcxLDAuMjM4LDAuMjkyLDAuNTU4LDAuNTIxLDAuNzAxYzAuOTYxLDAuNjA4LDEuNTg2LDEuNDc1LDEuOTk5LDIuNDk4ICAgYzAuNjQ5LDEuNjA0LDEuOTA5LDIuMzE5LDMuNTQ2LDIuNDU5YzAuNzk5LDAuMDY1LDEuNjA2LDAuMDEsMi40ODEsMC4wMWMwLDAuOTk2LDAuMDM2LDIuMTMzLTAuMDE1LDMuMjY1ICAgYy0wLjAyNiwwLjYxLTAuNjM5LDAuODU0LTEuMzczLDAuNjA0Yy0xLjk0Ny0wLjY2Ni0zLjc1Mi0xLjYyMS01LjMxMS0yLjk2M0MwLjk1NiwyNi45Ni0xLjIxNCwyMC44MywwLjY1NywxMy42NTUgICBDMi41MjIsNi41MDMsNy4zODMsMi4xMTYsMTQuNjUxLDAuNzM5QzI0LjcwOC0xLjE2MywzNC4yMzUsNi4xNjEsMzUuMjMzLDE2LjM3QzM2LjAyMSwyNC40MTgsMzEuMjg0LDMxLjk0OSwyMy43MSwzNC42ODl6ICAgIE0xNC4yMjksMjUuODVjLTAuMDA2LDAuMDE0LTAuMDEsMC4wMjQtMC4wMTYsMC4wMzhjMC4wMTgsMC4wMDMsMC4wMzYsMC4wMDYsMC4wNTUsMC4wMDkgICBDMTQuMjgyLDI1Ljg5OCwxNC4yOTQsMjUuOTIzLDE0LjIyOSwyNS44NXogTTkuNjc5LDI5LjAzMWMwLjE1NywwLjA5NywwLjMwNywwLjIyLDAuNDc3LDAuMjczYzAuMDYyLDAuMDIsMC4xNzctMC4xMjEsMC4zOC0wLjI3MSAgIGMtMC4yODItMC4xMDctMC40NDgtMC4yMDEtMC42MjMtMC4yMjVDOS44NDUsMjguOCw5Ljc1NywyOC45NTMsOS42NzksMjkuMDMxeiBNMTEuMTEyLDI5LjI3N2MwLjAyMywwLjEwNSwwLjIzMiwwLjIzNiwwLjM1NSwwLjIzNCAgIGMwLjExOS0wLjAwMiwwLjIzNS0wLjE2LDAuMzU0LTAuMjVjLTAuMTA4LTAuMDk5LTAuMjE2LTAuMTk1LTAuNTQ4LTAuNDk0QzExLjIwMSwyOC45NzUsMTEuMDgyLDI5LjE0MywxMS4xMTIsMjkuMjc3eiAgICBNMTIuODcsMjguODU0Yy0wLjE0OCwwLjAzNS0wLjI3MywwLjE3Mi0wLjQwOCwwLjI2NmMwLjA3OSwwLjEsMC4xNTgsMC4xOTMsMC4yODUsMC4zNWMwLjE3NS0wLjE2LDAuMjk0LTAuMjcxLDAuNDE0LTAuMzc5ICAgQzEzLjA2MSwyOS4wMDQsMTIuOTQ0LDI4LjgzNiwxMi44NywyOC44NTR6IE04LjUxMiwyOC4yNjFjMC4wODIsMC4xNTUsMC4yMDksMC4yODksMC4zODEsMC41MDggICBjMC4xMTUtMC4xODgsMC4yNC0wLjMzMiwwLjIxOC0wLjM2MWMtMC4xMDktMC4xNDMtMC4yNTctMC4yNi0wLjQwMy0wLjM2N0M4LjY5OCwyOC4wMzMsOC40OTUsMjguMjI3LDguNTEyLDI4LjI2MXoiIGZpbGw9IiNGRkZGRkYiLz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8L3N2Zz4K" alt="github" /></a>
+              <a href="https://github.com/specro/philter"><img src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTYuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgd2lkdGg9IjY0cHgiIGhlaWdodD0iNjRweCIgdmlld0JveD0iMCAwIDM1LjMxOCAzNS4zMTgiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDM1LjMxOCAzNS4zMTg7IiB4bWw6c3BhY2U9InByZXNlcnZlIj4KPGc+Cgk8cGF0aCBkPSJNMjMuNzEsMzQuNjg5Yy0wLjE3MiwwLjA2Mi0wLjM0NSwwLjEzNy0wLjUyMiwwLjE2OGMtMC42NzgsMC4xMjEtMS4xMTItMC4yMjktMS4xMTYtMC45MjIgICBjLTAuMDA5LTEuMjg3LTAuMDA5LTIuNTcyLDAuMDEyLTMuODU5YzAuMDIyLTEuNDgtMC4wMTItMi45NDEtMS4xMzktNC4xNjJjMC42Ny0wLjEyLDEuMjY2LTAuMjA0LDEuODQ5LTAuMzM4ICAgYzMuODYyLTAuODg3LDUuODY4LTMuMzIzLDYuMTI0LTcuMzY2YzAuMTMxLTIuMDU4LTAuMjM2LTMuOTQ2LTEuNjA0LTUuNTY3Yy0wLjA5OS0wLjExNC0wLjEwNC0wLjM3My0wLjA1Ny0wLjUzOSAgIGMwLjM2NC0xLjM0LDAuMjU4LTIuNjQ5LTAuMTY2LTMuOTU5Yy0wLjEwNS0wLjMyNy0wLjI3OS0wLjQyOC0wLjYwMi0wLjQwN2MtMS4xMzQsMC4wNjMtMi4xNzMsMC40NjEtMy4wODksMS4wNzMgICBjLTAuODgzLDAuNTkzLTEuNzA1LDAuNzIyLTIuNzU0LDAuNDgyYy0yLjMxLTAuNTIxLTQuNjM1LTAuMzY5LTYuOTQsMC4xNjVjLTAuMjYxLDAuMDYyLTAuNjEyLTAuMDIxLTAuODUxLTAuMTYxICAgYy0xLjA4Mi0wLjYzNC0yLjE2NC0xLjI1LTMuNDEyLTEuNDk2Yy0wLjk2NS0wLjE4OC0xLjA0OS0wLjE0LTEuMzA1LDAuNzkzQzcuODE2LDkuNzcsNy43ODQsMTAuOTQ3LDguMTEzLDEyLjEzICAgYzAuMDQ3LDAuMTcyLTAuMDAyLDAuNDQ4LTAuMTE3LDAuNTc1Yy0yLjU1NywyLjg1My0xLjYzMSw4LjI0NCwwLjA5MiwxMC4zMDljMS4zNCwxLjYwNCwzLjEyLDIuMzI2LDUuMDk2LDIuNzAxICAgYzAuMzQ1LDAuMDY0LDAuNjg4LDAuMTEzLDEuMDMzLDAuMTczYy0wLjI5NiwwLjc3LTAuNTYyLDEuNDk3LTAuODYzLDIuMjEyYy0wLjA1OSwwLjEzOC0wLjI0NiwwLjI1NC0wLjM5OSwwLjMxMiAgIGMtMS45MzgsMC43NTItMy42MDQsMC4xOTktNC43MTMtMS41NmMtMC41OTMtMC45MzgtMS4zNTQtMS42MzktMi40ODgtMS44NDJjLTAuMDM2LTAuMDA3LTAuMDczLTAuMDI2LTAuMTA2LTAuMDIxICAgYy0wLjMwNSwwLjA4LTAuNjA3LDAuMTY0LTAuOTExLDAuMjQ2YzAuMTcxLDAuMjM4LDAuMjkyLDAuNTU4LDAuNTIxLDAuNzAxYzAuOTYxLDAuNjA4LDEuNTg2LDEuNDc1LDEuOTk5LDIuNDk4ICAgYzAuNjQ5LDEuNjA0LDEuOTA5LDIuMzE5LDMuNTQ2LDIuNDU5YzAuNzk5LDAuMDY1LDEuNjA2LDAuMDEsMi40ODEsMC4wMWMwLDAuOTk2LDAuMDM2LDIuMTMzLTAuMDE1LDMuMjY1ICAgYy0wLjAyNiwwLjYxLTAuNjM5LDAuODU0LTEuMzczLDAuNjA0Yy0xLjk0Ny0wLjY2Ni0zLjc1Mi0xLjYyMS01LjMxMS0yLjk2M0MwLjk1NiwyNi45Ni0xLjIxNCwyMC44MywwLjY1NywxMy42NTUgICBDMi41MjIsNi41MDMsNy4zODMsMi4xMTYsMTQuNjUxLDAuNzM5QzI0LjcwOC0xLjE2MywzNC4yMzUsNi4xNjEsMzUuMjMzLDE2LjM3QzM2LjAyMSwyNC40MTgsMzEuMjg0LDMxLjk0OSwyMy43MSwzNC42ODl6ICAgIE0xNC4yMjksMjUuODVjLTAuMDA2LDAuMDE0LTAuMDEsMC4wMjQtMC4wMTYsMC4wMzhjMC4wMTgsMC4wMDMsMC4wMzYsMC4wMDYsMC4wNTUsMC4wMDkgICBDMTQuMjgyLDI1Ljg5OCwxNC4yOTQsMjUuOTIzLDE0LjIyOSwyNS44NXogTTkuNjc5LDI5LjAzMWMwLjE1NywwLjA5NywwLjMwNywwLjIyLDAuNDc3LDAuMjczYzAuMDYyLDAuMDIsMC4xNzctMC4xMjEsMC4zOC0wLjI3MSAgIGMtMC4yODItMC4xMDctMC40NDgtMC4yMDEtMC42MjMtMC4yMjVDOS44NDUsMjguOCw5Ljc1NywyOC45NTMsOS42NzksMjkuMDMxeiBNMTEuMTEyLDI5LjI3N2MwLjAyMywwLjEwNSwwLjIzMiwwLjIzNiwwLjM1NSwwLjIzNCAgIGMwLjExOS0wLjAwMiwwLjIzNS0wLjE2LDAuMzU0LTAuMjVjLTAuMTA4LTAuMDk5LTAuMjE2LTAuMTk1LTAuNTQ4LTAuNDk0QzExLjIwMSwyOC45NzUsMTEuMDgyLDI5LjE0MywxMS4xMTIsMjkuMjc3eiAgICBNMTIuODcsMjguODU0Yy0wLjE0OCwwLjAzNS0wLjI3MywwLjE3Mi0wLjQwOCwwLjI2NmMwLjA3OSwwLjEsMC4xNTgsMC4xOTMsMC4yODUsMC4zNWMwLjE3NS0wLjE2LDAuMjk0LTAuMjcxLDAuNDE0LTAuMzc5ICAgQzEzLjA2MSwyOS4wMDQsMTIuOTQ0LDI4LjgzNiwxMi44NywyOC44NTR6IE04LjUxMiwyOC4yNjFjMC4wODIsMC4xNTUsMC4yMDksMC4yODksMC4zODEsMC41MDggICBjMC4xMTUtMC4xODgsMC4yNC0wLjMzMiwwLjIxOC0wLjM2MWMtMC4xMDktMC4xNDMtMC4yNTctMC4yNi0wLjQwMy0wLjM2N0M4LjY5OCwyOC4wMzMsOC40OTUsMjguMjI3LDguNTEyLDI4LjI2MXoiIGZpbGw9IiNGRkZGRkYiLz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8L3N2Zz4K" alt="github"></a>
             </div>
           </div>
         </div>
       </footer>
       <div class="text-center">
-        <p>Copyright &copy; 2017 Philter</p>
+        <p>Copyright &#xA9; 2017 Philter</p>
       </div>
     </div>
 
-    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="0" height="0" id="philter-svg"><defs>
-      <filter id="vintage-1" primitiveUnits="objectBoundingBox"><feColorMatrix type="matrix" values="0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0" result="grayscale" /><feComponentTransfer x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB" result="gradientMap"><feFuncR type="table" tableValues="0.0352941176470588 0.2745098039215686"/><feFuncG type="table" tableValues="0.396078431372549 0.0666666666666667"/><feFuncB type="table" tableValues="0.6431372549019608 0.0509803921568627"/><feFuncA type="table" tableValues="1 1"/></feComponentTransfer><feBlend in="gradientMap" in2="SourceGraphic" mode="soft-light" result="softLight" /><feComponentTransfer x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB" result="curves"><feFuncR type="table" tableValues="0 0.2862745098039216 0.7137254901960784 1"/><feFuncG type="table" tableValues="0 0.2862745098039216 0.7137254901960784 1"/><feFuncB type="table" tableValues="0 0.2862745098039216 0.7137254901960784 1"/><feFuncA type="table" tableValues="1 1"/></feComponentTransfer><feComponentTransfer x="0" y="0" width="100%" height="100%" color-interpolation-filters="linearRGB" result="exposure"><feFuncR type="gamma" amplitude="1" exponent="1" offset="0.02" /><feFuncG type="gamma" amplitude="1" exponent="1" offset="0.02" /><feFuncB type="gamma" amplitude="1" exponent="1" offset="0.02" /><feFuncA type="gamma" amplitude="1" exponent="1" offset="0" /></feComponentTransfer></filter>
-      <filter id="vintage-2" primitiveUnits="objectBoundingBox"><feColorMatrix type="matrix" values="0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0" result="grayscale" /><feComponentTransfer x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB" result="gradientMap"><feFuncR type="table" tableValues="0.2901960784313725 0.7294117647058824"/><feFuncG type="table" tableValues="0.3490196078431373 0.5098039215686275"/><feFuncB type="table" tableValues="0.3725490196078431 0.3294117647058824"/><feFuncA type="table" tableValues="1 1"/></feComponentTransfer><feBlend in="gradientMap" in2="SourceGraphic" mode="overlay" result="overlay" /><feComponentTransfer x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB" result="curves"><feFuncR type="table" tableValues="0.203921568627451 0.2784313725490196 0.5568627450980392 0.8588235294117647 1"/><feFuncG type="table" tableValues="0.196078431372549 0.3529411764705882 0.7568627450980392 1"/><feFuncB type="table" tableValues="0.2235294117647059 0.2745098039215686 0.3254901960784314 0.4274509803921569 0.5647058823529412 0.7529411764705882 1 1 1"/><feFuncA type="table" tableValues="1 1"/></feComponentTransfer><feColorMatrix type="saturate" values="0.65" result="desaturate" /><feComponentTransfer x="0" y="0" width="100%" height="100%" color-interpolation-filters="linearRGB" result="exposure"><feFuncR type="gamma" amplitude="1" exponent="1" offset="0.02" /><feFuncG type="gamma" amplitude="1" exponent="1" offset="0.02" /><feFuncB type="gamma" amplitude="1" exponent="1" offset="0.02" /><feFuncA type="gamma" amplitude="1" exponent="1" offset="0" /></feComponentTransfer></filter>
-      <filter id="vintage-3" primitiveUnits="objectBoundingBox"><feComponentTransfer x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB" result="curves"><feFuncR type="table" tableValues="0.196078431372549 0.2196078431372549 0.4352941176470588 0.7843137254901961 1"/><feFuncG type="table" tableValues="0 0.3588235294117647 0.6137254901960784 0.9 1"/><feFuncB type="table" tableValues="0.3196078431372549 0.4333333333333333 0.5156862745098039 0.5980392156862745 0.6882352941176471 0.7745098039215686 0.8529411764705882 0.9823529411764706 1"/><feFuncA type="table" tableValues="1 1"/></feComponentTransfer><feColorMatrix type="saturate" values="0.95" result="desaturate" /><feComponentTransfer x="0" y="0" width="100%" height="100%" color-interpolation-filters="linearRGB" result="exposure"><feFuncR type="gamma" amplitude="1" exponent="1" offset="0.03" /><feFuncG type="gamma" amplitude="1" exponent="1" offset="0.03" /><feFuncB type="gamma" amplitude="1" exponent="1" offset="0.03" /><feFuncA type="gamma" amplitude="1" exponent="1" offset="0" /></feComponentTransfer></filter>
-      <filter id="vintage-4" primitiveUnits="objectBoundingBox"><feColorMatrix type="matrix" values="0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0" result="grayscale" /><feComponentTransfer x="0" y="0" width="100%" height="100%" result="opacity"><feFuncA type="linear" slope="0.5" /></feComponentTransfer><feBlend in="opacity" in2="SourceGraphic" mode="soft-light" result="softLight" /><feComponentTransfer x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB" result="curves"><feFuncR type="table" tableValues="0.1607843137254902 0.4509803921568627 1"/><feFuncG type="table" tableValues="0.2529411764705882 0.3352941176470588 0.6294117647058824 0.9627450980392157 1"/><feFuncB type="table" tableValues="0 0.3862745098039216 0.5784313725490196 0.9784313725490196 1"/><feFuncA type="table" tableValues="1 1"/></feComponentTransfer><feColorMatrix type="saturate" values="0.9" result="desaturate" /><feComponentTransfer x="0" y="0" width="100%" height="100%" color-interpolation-filters="linearRGB" result="exposure"><feFuncR type="gamma" amplitude="1" exponent="1" offset="0.02" /><feFuncG type="gamma" amplitude="1" exponent="1" offset="0.02" /><feFuncB type="gamma" amplitude="1" exponent="1" offset="0.02" /><feFuncA type="gamma" amplitude="1" exponent="1" offset="0" /></feComponentTransfer></filter>
-      <filter id="vintage-5" primitiveUnits="objectBoundingBox"><feComponentTransfer x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB" result="levels"><feFuncR type="table" tableValues="0.1137254901960784 0.8745098039215686"/><feFuncG type="table" tableValues="0.1137254901960784 0.8745098039215686"/><feFuncB type="table" tableValues="0.1137254901960784 0.8745098039215686"/></feComponentTransfer><feBlend in="levels" in2="SourceGraphic" mode="screen" result="screen" /><feComponentTransfer x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB" result="curves"><feFuncR type="table" tableValues="0 0 0 0 0.3607843137254902 0.6313725490196078 0.7568627450980392 0.8980392156862745 1"/><feFuncG type="table" tableValues="0 0.2431372549019608 1"/><feFuncB type="table" tableValues="0.1803921568627451 0.392156862745098 0.5490196078431373 0.8431372549019608"/></feComponentTransfer><feComponentTransfer x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB" result="levels2"><feFuncR type="table" tableValues="0.0862745098039216 0.8588235294117647"/><feFuncG type="table" tableValues="0.0862745098039216 0.8588235294117647"/><feFuncB type="table" tableValues="0.0862745098039216 0.8588235294117647"/></feComponentTransfer></filter>
-      <filter id="vintage-6" primitiveUnits="objectBoundingBox"><feColorMatrix type="matrix" values="0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0" result="grayscale" /><feComponentTransfer x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB" result="levels"><feFuncR type="table" tableValues="0.192156862745098 0.35 1"/><feFuncG type="table" tableValues="0.192156862745098 0.35 1"/><feFuncB type="table" tableValues="0.192156862745098 0.35 1"/></feComponentTransfer><feComponentTransfer x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB" result="curves"><feFuncR type="table" tableValues="0.1882352941176471 0.2274509803921569 0.2705882352941176 0.3254901960784314 0.392156862745098 0.4941176470588235 0.5843137254901961 0.7176470588235294 0.8509803921568627"/><feFuncG type="table" tableValues="0 0.192156862745098 0.396078431372549 0.6392156862745098 0.8980392156862745"/><feFuncB type="table" tableValues="0.1411764705882353 0.3803921568627451 0.9176470588235294"/></feComponentTransfer><feConvolveMatrix order="3 3" preserveAlpha="true" kernelMatrix="1 -1 1 -1 -1 -1 1 -1 1" result="sharpen" /><feComponentTransfer x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB" result="opacity"><feFuncA type="linear" slope="0.2"/></feComponentTransfer><feBlend in="opacity" in2="curves" /></filter>
-    </defs></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="0" height="0" id="philter-svg"><defs><filter id="vintage-1" primitiveunits="objectBoundingBox"><fecolormatrix type="matrix" values="0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0" result="grayscale"><fecomponenttransfer x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB" result="gradientMap"><fefuncr type="table" tablevalues="0.0352941176470588 0.2745098039215686"><fefuncg type="table" tablevalues="0.396078431372549 0.0666666666666667"><fefuncb type="table" tablevalues="0.6431372549019608 0.0509803921568627"><fefunca type="table" tablevalues="1 1"/></fefuncb></fefuncg></fefuncr></fecomponenttransfer><feblend in="gradientMap" in2="SourceGraphic" mode="soft-light" result="softLight"><fecomponenttransfer x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB" result="curves"><fefuncr type="table" tablevalues="0 0.2862745098039216 0.7137254901960784 1"><fefuncg type="table" tablevalues="0 0.2862745098039216 0.7137254901960784 1"><fefuncb type="table" tablevalues="0 0.2862745098039216 0.7137254901960784 1"><fefunca type="table" tablevalues="1 1"/></fefuncb></fefuncg></fefuncr></fecomponenttransfer><fecomponenttransfer x="0" y="0" width="100%" height="100%" color-interpolation-filters="linearRGB" result="exposure"><fefuncr type="gamma" amplitude="1" exponent="1" offset="0.02"><fefuncg type="gamma" amplitude="1" exponent="1" offset="0.02"><fefuncb type="gamma" amplitude="1" exponent="1" offset="0.02"><fefunca type="gamma" amplitude="1" exponent="1" offset="0"/></fefuncb></fefuncg></fefuncr></fecomponenttransfer></feblend></fecolormatrix></filter><filter id="vintage-2" primitiveUnits="objectBoundingBox"><feColorMatrix type="matrix" values="0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0" result="grayscale" /><feComponentTransfer x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB" result="gradientMap"><feFuncR type="table" tableValues="0.2901960784313725 0.7294117647058824"/><feFuncG type="table" tableValues="0.3490196078431373 0.5098039215686275"/><feFuncB type="table" tableValues="0.3725490196078431 0.3294117647058824"/><feFuncA type="table" tableValues="1 1"/></feComponentTransfer><feBlend in="gradientMap" in2="SourceGraphic" mode="overlay" result="overlay" /><feComponentTransfer x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB" result="curves"><feFuncR type="table" tableValues="0.203921568627451 0.2784313725490196 0.5568627450980392 0.8588235294117647 1"/><feFuncG type="table" tableValues="0.196078431372549 0.3529411764705882 0.7568627450980392 1"/><feFuncB type="table" tableValues="0.2235294117647059 0.2745098039215686 0.3254901960784314 0.4274509803921569 0.5647058823529412 0.7529411764705882 1 1 1"/><feFuncA type="table" tableValues="1 1"/></feComponentTransfer><feColorMatrix type="saturate" values="0.65" result="desaturate" /><feComponentTransfer x="0" y="0" width="100%" height="100%" color-interpolation-filters="linearRGB" result="exposure"><feFuncR type="gamma" amplitude="1" exponent="1" offset="0.02" /><feFuncG type="gamma" amplitude="1" exponent="1" offset="0.02" /><feFuncB type="gamma" amplitude="1" exponent="1" offset="0.02" /><feFuncA type="gamma" amplitude="1" exponent="1" offset="0" /></feComponentTransfer></filter><filter id="vintage-3" primitiveUnits="objectBoundingBox"><feComponentTransfer x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB" result="curves"><feFuncR type="table" tableValues="0.196078431372549 0.2196078431372549 0.4352941176470588 0.7843137254901961 1"/><feFuncG type="table" tableValues="0 0.3588235294117647 0.6137254901960784 0.9 1"/><feFuncB type="table" tableValues="0.3196078431372549 0.4333333333333333 0.5156862745098039 0.5980392156862745 0.6882352941176471 0.7745098039215686 0.8529411764705882 0.9823529411764706 1"/><feFuncA type="table" tableValues="1 1"/></feComponentTransfer><feColorMatrix type="saturate" values="0.95" result="desaturate" /><feComponentTransfer x="0" y="0" width="100%" height="100%" color-interpolation-filters="linearRGB" result="exposure"><feFuncR type="gamma" amplitude="1" exponent="1" offset="0.03" /><feFuncG type="gamma" amplitude="1" exponent="1" offset="0.03" /><feFuncB type="gamma" amplitude="1" exponent="1" offset="0.03" /><feFuncA type="gamma" amplitude="1" exponent="1" offset="0" /></feComponentTransfer></filter><filter id="vintage-4" primitiveUnits="objectBoundingBox"><feColorMatrix type="matrix" values="0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0" result="grayscale" /><feComponentTransfer x="0" y="0" width="100%" height="100%" result="opacity"><feFuncA type="linear" slope="0.5" /></feComponentTransfer><feBlend in="opacity" in2="SourceGraphic" mode="soft-light" result="softLight" /><feComponentTransfer x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB" result="curves"><feFuncR type="table" tableValues="0.1607843137254902 0.4509803921568627 1"/><feFuncG type="table" tableValues="0.2529411764705882 0.3352941176470588 0.6294117647058824 0.9627450980392157 1"/><feFuncB type="table" tableValues="0 0.3862745098039216 0.5784313725490196 0.9784313725490196 1"/><feFuncA type="table" tableValues="1 1"/></feComponentTransfer><feColorMatrix type="saturate" values="0.9" result="desaturate" /><feComponentTransfer x="0" y="0" width="100%" height="100%" color-interpolation-filters="linearRGB" result="exposure"><feFuncR type="gamma" amplitude="1" exponent="1" offset="0.02" /><feFuncG type="gamma" amplitude="1" exponent="1" offset="0.02" /><feFuncB type="gamma" amplitude="1" exponent="1" offset="0.02" /><feFuncA type="gamma" amplitude="1" exponent="1" offset="0" /></feComponentTransfer></filter><filter id="vintage-5" primitiveUnits="objectBoundingBox"><feComponentTransfer x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB" result="levels"><feFuncR type="table" tableValues="0.1137254901960784 0.8745098039215686"/><feFuncG type="table" tableValues="0.1137254901960784 0.8745098039215686"/><feFuncB type="table" tableValues="0.1137254901960784 0.8745098039215686"/></feComponentTransfer><feBlend in="levels" in2="SourceGraphic" mode="screen" result="screen" /><feComponentTransfer x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB" result="curves"><feFuncR type="table" tableValues="0 0 0 0 0.3607843137254902 0.6313725490196078 0.7568627450980392 0.8980392156862745 1"/><feFuncG type="table" tableValues="0 0.2431372549019608 1"/><feFuncB type="table" tableValues="0.1803921568627451 0.392156862745098 0.5490196078431373 0.8431372549019608"/></feComponentTransfer><feComponentTransfer x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB" result="levels2"><feFuncR type="table" tableValues="0.0862745098039216 0.8588235294117647"/><feFuncG type="table" tableValues="0.0862745098039216 0.8588235294117647"/><feFuncB type="table" tableValues="0.0862745098039216 0.8588235294117647"/></feComponentTransfer></filter><filter id="vintage-6" primitiveUnits="objectBoundingBox"><feColorMatrix type="matrix" values="0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0" result="grayscale" /><feComponentTransfer x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB" result="levels"><feFuncR type="table" tableValues="0.192156862745098 0.35 1"/><feFuncG type="table" tableValues="0.192156862745098 0.35 1"/><feFuncB type="table" tableValues="0.192156862745098 0.35 1"/></feComponentTransfer><feComponentTransfer x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB" result="curves"><feFuncR type="table" tableValues="0.1882352941176471 0.2274509803921569 0.2705882352941176 0.3254901960784314 0.392156862745098 0.4941176470588235 0.5843137254901961 0.7176470588235294 0.8509803921568627"/><feFuncG type="table" tableValues="0 0.192156862745098 0.396078431372549 0.6392156862745098 0.8980392156862745"/><feFuncB type="table" tableValues="0.1411764705882353 0.3803921568627451 0.9176470588235294"/></feComponentTransfer><feConvolveMatrix order="3 3" preserveAlpha="true" kernelMatrix="1 -1 1 -1 -1 -1 1 -1 1" result="sharpen" /><feComponentTransfer x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB" result="opacity"><feFuncA type="linear" slope="0.2"/></feComponentTransfer><feBlend in="opacity" in2="curves" /></filter><filter id="duotone-1" primitiveUnits="objectBoundingBox"><feColorMatrix type="matrix" in="SourceGraphic" result="grayscale" values="1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 0 0 0 1 0"></feColorMatrix><feComponentTransfer x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB" result="gradientMap"><feFuncR type="table" tableValues="0.4392156862745098 0.8980392156862745"></feFuncR><feFuncG type="table" tableValues="0.1568627450980392 0.6980392156862745"></feFuncG><feFuncB type="table" tableValues="0.8941176470588236 0.792156862745098"></feFuncB><feFuncA type="table" tableValues="1 1"></feFuncA></feComponentTransfer></filter></defs></svg>
 
     <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
     <script>
