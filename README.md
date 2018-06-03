@@ -1,4 +1,4 @@
-# Philter v1.4.2
+# Philter v1.5.0
 [![npm](https://img.shields.io/npm/v/philter.svg)](https://www.npmjs.com/package/philter) [![dependencies](https://david-dm.org/specro/philter.svg)](https://david-dm.org/specro/philter)
 
 Philter is a JS plugin giving you the power to control CSS filters with HTML data attributes.
