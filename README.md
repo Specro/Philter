@@ -1,4 +1,4 @@
-# Philter v1.4.1
+# Philter v1.4.2
 [![npm](https://img.shields.io/npm/v/philter.svg)](https://www.npmjs.com/package/philter) [![dependencies](https://david-dm.org/specro/philter.svg)](https://david-dm.org/specro/philter)
 
 Philter is a JS plugin giving you the power to control CSS filters with HTML data attributes.
@@ -30,21 +30,19 @@ You can also pass 3 parameters to philter:
 * customFilters - array - Array of custom filter names.
 
 ### Browser
-I highly recommend using Philter in Node and use the plugin version only for development and demonstration purposes.
+I highly recommend using Philter in Node and use the plugin version only for development and demonstration purposes, since the browser version doesn't support all the listed filters. 
 
 First initiate the plugin:
 ```html
 <script>
   new Philter({
     transitionTime: 0.5, // hover transition time
-    url: './js', // philter directory
     tag: true // 'philter' in data attributes
   });
 </script>
 ```
 You can pass 3 parameters to Philter:
 * transitionTime - The hover transition time of default CSS filters
-* url - Philter loads custom SVG filters from external files. Its default path is '../js' where it reaches the filters in default 'philter' folder. If your directory differs somehow e. g. you use 'scripts' instead of 'js' directory, you should pass the path to 'philter' directory in the url parameter. You don't need the trailing slash!
 * tag - This enables the 'philter' part in data-philter-<filter>. If you don't use any plugins which use data attributes or they won't collide with Philter, you can set this to false to omit this part and shorten your markup.
 
 ### CLI
@@ -120,6 +118,7 @@ Here's a list of filters that you can use and their limitations in Philter.
 * svg - Custom SVG filter. Requires 1 value - filter ID.
 * color - Requires 2 values. Color and opacity.
 * vintage - Requires an integer from 1 to 6.
+* duotone - Requires 2 values. 2 colors in hex.
 * custom - Requires a string - custom filter name.
 * anaglyph - Experimental - Requires an anaglyph offset value.
 
@@ -133,6 +132,9 @@ There are 6 vintage filters:
 * Close to 3 but a bit less brightness and more green.
 * Close to 2 but mixed with violet. Gives a sweet/daydream look.
 * Grayscale but better (IMO :))
+
+### Duotone
+Duotone filter maps shadows and highlights of the image to 2 different colors. First color is mapped to the shadow and second to the highlights. Colors for this filter should be provided in hex format e.g., #123456.
 
 ### Experimental
 This section contains filters that are experimental i.e. work only in one browser, have image breaking bugs (even though this whole SVG thing is pretty buggy) etc. These filters will be showcased here: [Philter experimental](https://specro.github.io/Philter/experimental).
@@ -152,11 +154,11 @@ Philter was developed and tested on Chrome 46+, Firefox 41+, Opera 34+ and Edge 
 ## Issues
 This is mainly due to SVG filter limitations or complexities. It may be solved in the future... or it may not.
 * On my recent tests with Chrome SVG filters stack with other filters but as always you may encounter bugs.
-* SVG filters don't support transitions.
-* SVG filters actually know what to do on hover but ^ and you may encounter other bugs (like flickering and so on).
+* SVG filters don't support CSS transitions.
+* SVG filters actually know what to do on hover but ^ and you may encounter other bugs (like flickering and so on). Especially on Edge and IE browsers.
 
 ## WIP
-I'm working on all sorts of stuff that involves this plugin and doesn't. So please bear with the way I develop Philter. If you have any suggestions ideas or just wanna say something you can send me an email at liudas.dzisevicius@gmail.com or tweet @_citizen00.
+I'm working on all sorts of stuff that involves this plugin and doesn't. So please bear with the way I develop Philter. If you have any suggestions ideas or just wanna say something you can send me an email at liudas.dzisevicius@gmail.com or tweet @baldassertation.
 * Gulp (I work with Gulp, so there will be no Grunt here. Sorry.)
 * Webpack
 * More custom SVG filters

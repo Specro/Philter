@@ -107,6 +107,12 @@ describe('Filters', () => {
       expect(svg.replace(/\r?\n|\r/g, '')).to.equal('<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="0" height="0" id="philter-svg"><defs><filter id="vintage-3" primitiveUnits="objectBoundingBox"><feComponentTransfer x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB" result="curves"><feFuncR type="table" tableValues="0.196078431372549 0.2196078431372549 0.4352941176470588 0.7843137254901961 1"/><feFuncG type="table" tableValues="0 0.3588235294117647 0.6137254901960784 0.9 1"/><feFuncB type="table" tableValues="0.3196078431372549 0.4333333333333333 0.5156862745098039 0.5980392156862745 0.6882352941176471 0.7745098039215686 0.8529411764705882 0.9823529411764706 1"/><feFuncA type="table" tableValues="1 1"/></feComponentTransfer><feColorMatrix type="saturate" values="0.95" result="desaturate" /><feComponentTransfer x="0" y="0" width="100%" height="100%" color-interpolation-filters="linearRGB" result="exposure"><feFuncR type="gamma" amplitude="1" exponent="1" offset="0.03" /><feFuncG type="gamma" amplitude="1" exponent="1" offset="0.03" /><feFuncB type="gamma" amplitude="1" exponent="1" offset="0.03" /><feFuncA type="gamma" amplitude="1" exponent="1" offset="0" /></feComponentTransfer></filter></defs></svg>')
     })
   })
+  it('duotone', function() {
+    philter('<div data-philter-duotone="#000000 #ffffff"></div>', (css, svg) => {
+      expect(css).to.equal('[data-philter-duotone="#000000 #ffffff"]{filter:url(#duotone-1);}')
+      expect(svg.replace(/\r?\n|\r/g, '')).to.equal('<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="0" height="0" id="philter-svg"><defs><filter id="duotone-1" primitiveunits="objectBoundingBox"><fecolormatrix type="matrix" in="SourceGraphic" result="grayscale" values="1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 0 0 0 1 0"></fecolormatrix><fecomponenttransfer x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB" result="gradientMap"><fefuncr type="table" tablevalues="0 1"></fefuncr><fefuncg type="table" tablevalues="0 1"></fefuncg><fefuncb type="table" tablevalues="0 1"></fefuncb><fefunca type="table" tablevalues="1 1"></fefunca></fecomponenttransfer></filter></defs></svg>')
+    })
+  })
   it('anaglyph', function() {
     philter('<div data-philter-anaglyph="1"></div>', (css, svg)=> {
       expect(css).to.equal('[data-philter-anaglyph="1"]{filter:url(#anaglyph-1);}')

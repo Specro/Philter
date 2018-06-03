@@ -11,7 +11,7 @@ function list(val) {
 }
 
 program
-.version('1.4.1')
+.version('1.5.0')
 .usage('[options] <file ...>')
 .option('-n, --no-tag', 'No "philter" in data attributes')
 .option('-s, --svg <dir>', 'SVG directory or svg/html file to append to')

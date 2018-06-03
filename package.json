@@ -30,12 +30,13 @@
     "bluebird": "^3.4.6",
     "cheerio": "^0.22.0",
     "commander": "^2.9.0",
-    "fs-extra": "^4.0.1",
+    "fs-extra": "^6.0.1",
+    "hex-rgb": "^3.0.0",
     "is-html": "^1.0.0",
-    "lodash": "^4.16.2"
+    "lodash": "^4.17.10"
   },
   "devDependencies": {
     "chai": "^4.1.2",
-    "mocha": "^3.1.2"
+    "mocha": "^5.2.0"
   }
 }

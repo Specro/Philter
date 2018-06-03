@@ -1,6 +1,16 @@
 # Change Log
 ## [Unreleased]
 
+## [1.5.0] - 2018-06-03
+### Added
+- Duotone filter
+
+### Changed
+- Moved SVG files in the browser plugin into JS to remove unneeded requests
+
+### Fixed
+- Custom filter paths resolving wrong
+
 ## [1.4.1] - 2017-07-05
 ### Added
 - Experimental anaglyph filter
